@@ -1,10 +1,11 @@
 package com.bogdan.courierapp.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -12,8 +13,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @Table(name = "statistics")
+@Entity
 public class Statistics {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,7 +24,9 @@ public class Statistics {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courier_id", referencedColumnName = "courier_id")
     private Courier courier;
+
     private Date period;
+
     @Column(name = "completed_deliveries")
     private int completedDeliveries;
 

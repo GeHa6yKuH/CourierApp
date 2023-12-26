@@ -1,22 +1,26 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.OrderStatus;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static javax.persistence.CascadeType.*;
+import static jakarta.persistence.CascadeType.*;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "order")
 public class Order {
@@ -30,8 +34,8 @@ public class Order {
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Product> productList;
 
-    @Column(name = "courier_id")
-    private UUID courierId;
+    @OneToOne
+    private Courier courier;
 
     @Column(name = "restaurant_id")
     private UUID restaurantId;
@@ -45,27 +49,17 @@ public class Order {
     @Column(name = "delivered_at")
     private Date deliveredAt;
 
-    public Order(UUID id, List<Product> productList, UUID courierId, UUID restaurantId, OrderStatus status, Date placedAt, Date deliveredAt) {
-        this.id = id;
-        this.productList = productList;
-        this.courierId = courierId;
-        this.restaurantId = restaurantId;
-        this.status = status;
-        this.placedAt = placedAt;
-        this.deliveredAt = deliveredAt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Objects.equals(id, order.id) && Objects.equals(productList, order.productList) && Objects.equals(courierId, order.courierId) && Objects.equals(restaurantId, order.restaurantId) && status == order.status && Objects.equals(placedAt, order.placedAt) && Objects.equals(deliveredAt, order.deliveredAt);
+        return Objects.equals(id, order.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, productList, courierId, restaurantId, status, placedAt, deliveredAt);
+        return Objects.hash(id);
     }
 
     @Override
@@ -73,7 +67,7 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", productList=" + productList +
-                ", courierId=" + courierId +
+                ", courier=" + courier +
                 ", restaurantId=" + restaurantId +
                 ", status=" + status +
                 ", placedAt=" + placedAt +

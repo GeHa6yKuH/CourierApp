@@ -1,24 +1,24 @@
 package com.bogdan.courierapp.entity;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @Table(name = "app_role")
+@Entity
 public class AppRole {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+//    @GeneratedValue(generator = "UUID")
     @Column(name = "app_role_id")
     private UUID id;
 

@@ -1,32 +1,33 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.Courierstatus;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import javax.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static javax.persistence.CascadeType.*;
+import static jakarta.persistence.CascadeType.*;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "courier")
+@Entity
 public class Courier {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @Column(name = "app_role_id")
+    @Column(name = "courier_id")
     private UUID id;
 
     @Column(name = "registration_date")

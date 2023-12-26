@@ -1,23 +1,23 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.RestaurantStatus;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static javax.persistence.CascadeType.*;
+import static jakarta.persistence.CascadeType.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @Table(name = "restaurant")
+@Entity
 public class Restaurant {
     @Id
     @GeneratedValue(generator = "UUID")

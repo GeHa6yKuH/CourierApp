@@ -1,22 +1,23 @@
 package com.bogdan.courierapp.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static javax.persistence.CascadeType.*;
+import static jakarta.persistence.CascadeType.*;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @Table(name = "delivery_zone")
+@Entity
 public class DeliveryZone {
 
     @Id
