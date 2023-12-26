@@ -5,4 +5,4 @@ spring:
   datasource:
       url: jdbc:mysql://localhost:3306/courierappdb
       username: root
-      password: 31LooxOr%98
+      password: 12341234

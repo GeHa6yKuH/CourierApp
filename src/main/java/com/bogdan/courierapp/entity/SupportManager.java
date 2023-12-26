@@ -1,10 +1,25 @@
-package entity;
+package com.bogdan.courierapp.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "manager")
 public class SupportManager {
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "manager_id")
     private UUID id;
+
+    @Column(name = "manager_name")
     private String name;
 
     public SupportManager(UUID id, String name) {

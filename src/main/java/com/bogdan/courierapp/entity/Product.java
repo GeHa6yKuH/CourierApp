@@ -1,12 +1,35 @@
-package entity;
+package com.bogdan.courierapp.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.UUID;
 
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "product")
 public class Product {
+
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "product_id")
     private UUID id;
+
+    @Column(name = "product_price")
     private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
     private Restaurant restaurant;
+
+    @Column(name = "description")
     private String description;
 
     public Product(UUID id, double price, Restaurant restaurant, String description) {

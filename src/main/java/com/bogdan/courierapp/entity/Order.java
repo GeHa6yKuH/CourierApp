@@ -1,19 +1,48 @@
-package entity;
+package com.bogdan.courierapp.entity;
 
-import entity.enums.OrderStatus;
+import com.bogdan.courierapp.entity.enums.OrderStatus;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import static javax.persistence.CascadeType.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+@Table(name = "order")
 public class Order {
+
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @Column(name = "order_id")
     private UUID id;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY,
+            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Product> productList;
+
+    @Column(name = "courier_id")
     private UUID courierId;
+
+    @Column(name = "restaurant_id")
     private UUID restaurantId;
+
+    @Column(name = "order_status")
     private OrderStatus status;
+
+    @Column(name = "placed_at")
     private Date placedAt;
+
+    @Column(name = "delivered_at")
     private Date deliveredAt;
 
     public Order(UUID id, List<Product> productList, UUID courierId, UUID restaurantId, OrderStatus status, Date placedAt, Date deliveredAt) {

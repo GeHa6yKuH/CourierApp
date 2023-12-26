@@ -1,4 +1,4 @@
-package entity.enums;
+package com.bogdan.courierapp.entity.enums;
 
 public enum OrderStatus {
     PLACED,
