@@ -30,8 +30,7 @@ public class Order {
     @Column(name = "order_id")
     private UUID id;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    @OneToMany
     private List<Product> productList;
 
     @OneToOne

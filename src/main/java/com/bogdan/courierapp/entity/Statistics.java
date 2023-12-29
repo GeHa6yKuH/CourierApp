@@ -46,12 +46,12 @@ public class Statistics {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Statistics that = (Statistics) o;
-        return completedDeliveries == that.completedDeliveries && Double.compare(earnedMoney, that.earnedMoney) == 0 && Objects.equals(id, that.id) && Objects.equals(courier, that.courier) && Objects.equals(period, that.period);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, courier, period, completedDeliveries, earnedMoney);
+        return Objects.hash(id);
     }
 
     @Override

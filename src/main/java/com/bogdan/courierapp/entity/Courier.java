@@ -62,12 +62,12 @@ public class Courier {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Courier courier = (Courier) o;
-        return Double.compare(balance, courier.balance) == 0 && Objects.equals(id, courier.id) && Objects.equals(registrationDate, courier.registrationDate) && Objects.equals(deliveryZone, courier.deliveryZone) && status == courier.status && Objects.equals(phoneNumber, courier.phoneNumber) && Objects.equals(statistics, courier.statistics) && Objects.equals(supportManagerID, courier.supportManagerID) && Objects.equals(appRole, courier.appRole);
+        return Objects.equals(id, courier.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, registrationDate, deliveryZone, status, phoneNumber, balance, statistics, supportManagerID, appRole);
+        return Objects.hash(id);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class DeliveryZone {
     @Column(name = "delivery_zone_id")
     private UUID id;
 
-    @OneToMany(mappedBy = "delivery_zone", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Restaurant> restaurants;
 
@@ -39,12 +39,12 @@ public class DeliveryZone {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DeliveryZone that = (DeliveryZone) o;
-        return Objects.equals(id, that.id) && Objects.equals(restaurants, that.restaurants);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, restaurants);
+        return Objects.hash(id);
     }
 
     @Override

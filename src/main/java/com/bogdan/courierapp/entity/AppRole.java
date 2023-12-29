@@ -39,12 +39,12 @@ public class AppRole {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AppRole appRole = (AppRole) o;
-        return Objects.equals(id, appRole.id) && Objects.equals(name, appRole.name) && Objects.equals(possibilities, appRole.possibilities);
+        return Objects.equals(id, appRole.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, possibilities);
+        return Objects.hash(id);
     }
 
     @Override
