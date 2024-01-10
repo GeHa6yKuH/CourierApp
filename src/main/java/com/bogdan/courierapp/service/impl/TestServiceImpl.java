@@ -16,6 +16,6 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public Courier getCourierById(String id) {
-        return testRepository.getCourierById(id);
+        return testRepository.findCourierById(UUID.fromString(id));
     }
 }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- Alter Table courier - Add fk_delivery_zone_id -->
+    <changeSet id="1" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_courier_delivery_zone_id"
+                                 baseTableName="courier"
+                                 baseColumnNames="delivery_zone_id"
+                                 referencedTableName="delivery_zone"
+                                 referencedColumnNames="delivery_zone_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- Add Other Foreign Keys to courier -->
+    <changeSet id="2" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_courier_statistics_id"
+                                 baseTableName="courier"
+                                 baseColumnNames="statistics_id"
+                                 referencedTableName="statistics"
+                                 referencedColumnNames="statistics_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="3" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_courier_support_manager_id"
+                                 baseTableName="courier"
+                                 baseColumnNames="support_manager_id"
+                                 referencedTableName="manager"
+                                 referencedColumnNames="manager_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="4" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_courier_app_role_id"
+                                 baseTableName="courier"
+                                 baseColumnNames="app_role_id"
+                                 referencedTableName="app_role"
+                                 referencedColumnNames="app_role_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+
+    <!-- Add Foreign Keys to manager -->
+
+    <changeSet id="5" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_manager_app_role_id"
+                                 baseTableName="manager"
+                                 baseColumnNames="app_role_id"
+                                 referencedTableName="app_role"
+                                 referencedColumnNames="app_role_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- Alter Table order - Add Foreign Keys -->
+    <changeSet id="6" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_order_courier_id"
+                                 baseTableName="order"
+                                 baseColumnNames="courier_id"
+                                 referencedTableName="courier"
+                                 referencedColumnNames="courier_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="7" author="b.podalevics">
+        <addForeignKeyConstraint constraintName="fk_order_restaurant_id"
+                                 baseTableName="order"
+                                 baseColumnNames="restaurant_id"
+                                 referencedTableName="restaurant"
+                                 referencedColumnNames="restaurant_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- Adding foreign key constraint to 'product' table -->
+    <changeSet id="8" author="your_name">
+        <addForeignKeyConstraint constraintName="fk_product_restaurant_id"
+                                 baseTableName="product"
+                                 baseColumnNames="restaurant_id"
+                                 referencedTableName="restaurant"
+                                 referencedColumnNames="restaurant_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- ************************************************************* -->
+
+    <!-- Adding foreign key constraint to 'restaurant' table (1) -->
+    <changeSet id="9" author="your_name">
+        <addForeignKeyConstraint constraintName="fk_restaurant_app_role_id"
+                                 baseTableName="restaurant"
+                                 baseColumnNames="app_role_id"
+                                 referencedTableName="app_role"
+                                 referencedColumnNames="app_role_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- Adding foreign key constraint to 'restaurant' table (2) -->
+    <changeSet id="10" author="your_name">
+        <addForeignKeyConstraint constraintName="fk_restaurant_delivery_zone_id"
+                                 baseTableName="restaurant"
+                                 baseColumnNames="delivery_zone_id"
+                                 referencedTableName="delivery_zone"
+                                 referencedColumnNames="delivery_zone_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <!-- ************************************************************* -->
+
+    <!-- Adding foreign key constraint to 'statistics' table -->
+    <changeSet id="11" author="your_name">
+        <addForeignKeyConstraint constraintName="fk_statistics_courier_id"
+                                 baseTableName="statistics"
+                                 baseColumnNames="courier_id"
+                                 referencedTableName="courier"
+                                 referencedColumnNames="courier_id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>

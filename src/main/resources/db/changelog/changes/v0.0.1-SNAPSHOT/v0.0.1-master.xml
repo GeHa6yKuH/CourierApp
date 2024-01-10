@@ -12,10 +12,12 @@
     <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_8_manager.xml"/>
     <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml"/>
     <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_5_product.xml"/>
-    <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_7_statistics.xml"/>
     <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_2_courier.xml"/>
+    <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_7_statistics.xml"/>
     <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_4_order.xml"/>
     <include file="db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283-create-sequence.xml"/>
+    <include file="db/changelog/changes/v0.0.1-SNAPSHOT/create_foreign_keys_for_tables.xml"/>
+
 
 
 <!--    <include file="db/changelog/changes/v0.0.1-SNAPSHOT/data.sql"/>-->
