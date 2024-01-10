@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="b.podalevics" id="insert test data into restaurant table 1">
+        <insert tableName="restaurant">
+            <column name="restaurant_id" value="86994b48-49a3-4fe9-862b-6da6bd9f869f"/>
+            <column name="owner" value="Marius Iceberg"/>
+            <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
+            <column name="restaurant_status" value="active"/>
+            <column name="creation_date" value="12.04.2023"/>
+            <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="insert test data into restaurant table 2">
+        <insert tableName="restaurant">
+            <column name="restaurant_id" value="63fbdcb5-6360-4af3-8701-858f7a4d6467"/>
+            <column name="owner" value="Antony Tilt"/>
+            <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
+            <column name="restaurant_status" value="offline"/>
+            <column name="creation_date" value="12.05.2023"/>
+            <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="insert test data into restaurant table 3">
+        <insert tableName="restaurant">
+            <column name="restaurant_id" value="29102365-460d-4301-8117-4e62441d9c7f"/>
+            <column name="owner" value="Anatoly Bargel"/>
+            <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
+            <column name="restaurant_status" value="active"/>
+            <column name="creation_date" value="23.05.2023"/>
+            <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="update-restaurant-status-active">
+        <update tableName="restaurant">
+            <column name="restaurant_status" value="ACTIVE"/>
+            <where>restaurant_status = 'active'</where>
+        </update>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="update-restaurant-status-offline">
+        <update tableName="restaurant">
+            <column name="restaurant_status" value="OFFLINE"/>
+            <where>restaurant_status = 'OFFLINE'</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>

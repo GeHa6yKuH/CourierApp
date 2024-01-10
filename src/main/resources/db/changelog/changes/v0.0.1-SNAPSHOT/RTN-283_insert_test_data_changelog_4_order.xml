@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="b.podalevics" id="insert test data into order table 1">
+        <insert tableName="order">
+            <column name="order_id" value="d02ea287-0e06-407f-b1b2-f1cc26651420"/>
+            <column name="courier_id" value="6453d453-0e33-41ec-aebd-637c5e6bb786"/>
+            <column name="restaurant_id" value="86994b48-49a3-4fe9-862b-6da6bd9f869f"/>
+            <column name="order_status" value="delivered"/>
+            <column name="placed_at" value="05.06.2023"/>
+            <column name="delivered_at" value="05.06.2023"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="insert test data into order table 2">
+        <insert tableName="order">
+            <column name="order_id" value="72dff74e-30f1-46cd-9693-42c34a4cac88"/>
+            <column name="courier_id" value="dca55a7d-a8db-4777-9daa-97c823277dbf"/>
+            <column name="restaurant_id" value="63fbdcb5-6360-4af3-8701-858f7a4d6467"/>
+            <column name="order_status" value="placed"/>
+            <column name="placed_at" value="06.06.2023"/>
+            <column name="delivered_at" value="06.06.2023"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="update-order-status-delivered">
+        <update tableName="order">
+            <column name="order_status" value="DELIVERED"/>
+            <where>order_status = 'delivered'</where>
+        </update>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="update-order-status-placed">
+        <update tableName="order">
+            <column name="order_status" value="PLACED"/>
+            <where>order_status = 'placed'</where>
+        </update>
+    </changeSet>
+
+
+</databaseChangeLog>

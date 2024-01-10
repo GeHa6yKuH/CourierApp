@@ -23,18 +23,25 @@ public class Restaurant {
     @GeneratedValue(generator = "UUID")
     @Column(name = "restaurant_id")
     private UUID id;
+
     @Column(name = "owner")
     private String owner;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
     private AppRole appRole;
+
     @Column(name = "restaurant_status")
+    @Enumerated(EnumType.STRING)
     private RestaurantStatus status;
+
     @Column(name = "creation_date")
     private Date creationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
     private DeliveryZone deliveryZone;
+
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Product> products;

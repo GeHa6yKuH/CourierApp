@@ -40,6 +40,7 @@ public class Order {
     private UUID restaurantId;
 
     @Column(name = "order_status")
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     @Column(name = "placed_at")

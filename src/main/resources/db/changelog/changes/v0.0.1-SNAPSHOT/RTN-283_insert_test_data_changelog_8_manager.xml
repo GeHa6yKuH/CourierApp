@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="b.podalevics" id="insert test data into manager table 1">
+        <insert tableName="manager">
+            <column name="manager_id" value="91069e9d-683b-4fd1-93bc-f135207b7e73"/>
+            <column name="manager_name" value="Alisa Welley"/>
+            <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="insert test data into manager table 2">
+        <insert tableName="manager">
+            <column name="manager_id" value="4829faa8-4946-410b-b859-f595d537e949"/>
+            <column name="manager_name" value="Alexei Treck"/>
+            <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="insert test data into manager table 3">
+        <insert tableName="manager">
+            <column name="manager_id" value="e1105616-383e-4e57-94da-f860bb08552d"/>
+            <column name="manager_name" value="Sandra Suar"/>
+            <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
+        </insert>
+    </changeSet>
+
+<!--    <changeSet author="b.podalevics" id="insert app_role_id in manager table first">-->
+<!--        <update tableName="manager">-->
+<!--            <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>-->
+<!--        </update>-->
+<!--    </changeSet>-->
+
+</databaseChangeLog>

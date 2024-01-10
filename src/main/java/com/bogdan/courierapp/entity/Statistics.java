@@ -1,6 +1,7 @@
 package com.bogdan.courierapp.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "statistics")
 @Entity
 public class Statistics {
@@ -25,21 +27,11 @@ public class Statistics {
     @JoinColumn(name = "courier_id", referencedColumnName = "courier_id")
     private Courier courier;
 
-    private Date period;
-
     @Column(name = "completed_deliveries")
     private int completedDeliveries;
 
     @Column(name = "earned_money")
     private double earnedMoney;
-
-    public Statistics(UUID id, Courier courier, Date period, int completedDeliveries, double earnedMoney) {
-        this.id = id;
-        this.courier = courier;
-        this.period = period;
-        this.completedDeliveries = completedDeliveries;
-        this.earnedMoney = earnedMoney;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -59,7 +51,6 @@ public class Statistics {
         return "Statistics{" +
                 "id=" + id +
                 ", courier=" + courier +
-                ", period=" + period +
                 ", completedDeliveries=" + completedDeliveries +
                 ", earnedMoney=" + earnedMoney +
                 '}';

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet author="b.podalevics" id="insert test data into delivery_zone table 1">
+        <insert tableName="delivery_zone">
+            <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
+            <column name="restaurants" value="Regattalex, AlimPizza, OleksandrKebab"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="b.podalevics" id="insert test data into delivery_zone table 2">
+        <insert tableName="delivery_zone">
+            <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
+            <column name="restaurants" value="Kalinka, Seljd, AntiWibe"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

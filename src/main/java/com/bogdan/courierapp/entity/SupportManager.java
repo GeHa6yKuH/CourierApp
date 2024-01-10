@@ -1,6 +1,7 @@
 package com.bogdan.courierapp.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "manager")
 @Entity
 public class SupportManager {
@@ -22,10 +24,10 @@ public class SupportManager {
     @Column(name = "manager_name")
     private String name;
 
-    public SupportManager(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
+    private AppRole appRole;
+
 
     @Override
     public boolean equals(Object o) {
@@ -45,6 +47,7 @@ public class SupportManager {
         return "SupportManager{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", appRole=" + appRole +
                 '}';
     }
 }

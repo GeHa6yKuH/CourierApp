@@ -3,9 +3,9 @@ spring:
     banner-mode: off
 
   datasource:
-      url: jdbc:mysql://localhost:3306/couriertest
-      username: root
-      password: 12341234
+      url: jdbc:postgresql://localhost/couriertest
+      username: couriertest
+      password: 123123
 
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml

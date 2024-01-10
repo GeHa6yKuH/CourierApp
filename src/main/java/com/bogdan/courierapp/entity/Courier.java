@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -31,13 +30,14 @@ public class Courier {
     private UUID id;
 
     @Column(name = "registration_date")
-    private Date registrationDate;
+    private String registrationDate;
 
     @OneToOne(cascade = {MERGE, PERSIST, REFRESH})
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
     private DeliveryZone deliveryZone;
 
     @Column(name = "courier_status")
+    @Enumerated(EnumType.STRING)
     private Courierstatus status;
 
     @Column(name = "phone_number")
@@ -50,10 +50,11 @@ public class Courier {
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Statistics> statistics;
 
-    @Column(name = "support_manager_id")
-    private UUID supportManagerID;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "support_manager_id", referencedColumnName = "manager_id")
+    private SupportManager supportManager;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
     private AppRole appRole;
 
@@ -74,13 +75,13 @@ public class Courier {
     public String toString() {
         return "Courier{" +
                 "id=" + id +
-                ", registrationDate=" + registrationDate +
+                ", registrationDate='" + registrationDate + '\'' +
                 ", deliveryZone=" + deliveryZone +
                 ", status=" + status +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", balance=" + balance +
                 ", statistics=" + statistics +
-                ", supportManagerID=" + supportManagerID +
+                ", supportManager=" + supportManager +
                 ", appRole=" + appRole +
                 '}';
     }

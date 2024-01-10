@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <changeSet author="b.podalevics" id="insert test data into app_role table 1">
+                <insert tableName="app_role">
+                    <column name="app_role_id" value="53da7e2b-7e7f-421e-8b5e-371dd13c2b64"/>
+                    <column name="name" value="courier"/>
+                    <column name="possibilities" value="can go online/offline, accept or reject incoming orders, manage app
+                     settings, use functions such as picking up the orders, using call button and delivering the orders,
+                     he can also contact the support team and watch statistics"/>
+                </insert>
+        </changeSet>
+
+        <changeSet author="b.podalevics" id="insert test data into app_role table 2">
+                 <insert tableName="app_role">
+                     <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
+                     <column name="name" value="support_manager"/>
+                     <column name="possibilities" value="support manager has all the functions needed to control the orders:
+                     he has ability to decline or give orders, has access to all the information about current orders in any
+                     locations and currently working couriers and restaurants, he can also contact all couriers, restaurants
+                     and customers if needed, as well as providing recompenses for them"/>
+                 </insert>
+        </changeSet>
+
+        <changeSet author="b.podalevics" id="insert test data into app_role table 3">
+                 <insert tableName="app_role">
+                      <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
+                      <column name="name" value="restaurant"/>
+                      <column name="possibilities" value="restaurant can receive and accept orders as well as courier,
+                      it can also contact support team, use call button for couriers and customers and watch own
+                      statistics. Restaurant can also set time, which is supposed to represent the moment in which an
+                      order is going to be ready for pick up."/>
+                 </insert>
+        </changeSet>
+
+</databaseChangeLog>
