@@ -31,10 +31,4 @@
         </insert>
     </changeSet>
 
-<!--    <changeSet author="b.podalevics" id="insert app_role_id in manager table first">-->
-<!--        <update tableName="manager">-->
-<!--            <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>-->
-<!--        </update>-->
-<!--    </changeSet>-->
-
 </databaseChangeLog>

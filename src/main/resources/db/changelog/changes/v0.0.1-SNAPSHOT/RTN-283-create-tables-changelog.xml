@@ -35,11 +35,14 @@
             <column name="courier_id" type="uuid">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
-            <column name="registration_date" type="varchar(45)">
+            <column name="courier_name" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registration_date" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="delivery_zone_id" type="uuid">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="courier_status" type="varchar(36)">
                 <constraints nullable="false"/>
@@ -51,13 +54,13 @@
                 <constraints nullable="false"/>
             </column>
             <column name="statistics_id" type="uuid">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="true" unique="true"/>
             </column>
             <column name="support_manager_id" type="uuid">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="app_role_id" type="uuid">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>
@@ -71,6 +74,9 @@
         <createTable tableName="delivery_zone">
             <column name="delivery_zone_id" type="uuid">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="delivery_zone_name" type="varchar(45)">
+                <constraints nullable="false"/>
             </column>
             <column name="restaurants" type="longtext">
                 <constraints nullable="false"/>
@@ -88,7 +94,7 @@
             <column name="manager_id" type="uuid">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
-            <column name="manager_name" type="longtext">
+            <column name="manager_name" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -122,10 +128,10 @@
             <column name="order_status" type="varchar(36)">
                 <constraints nullable="false"/>
             </column>
-            <column name="placed_at" type="datetime">
+            <column name="placed_at" type="timestamp">
                 <constraints nullable="false"/>
             </column>
-            <column name="delivered_at" type="datetime">
+            <column name="delivered_at" type="timestamp">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -140,6 +146,9 @@
         <createTable tableName="product">
             <column name="product_id" type="uuid">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="product_name" type="varchar(45)">
+                <constraints nullable="false"/>
             </column>
             <column name="product_price" type="varchar(36)">
                 <constraints nullable="false"/>
@@ -163,6 +172,9 @@
             <column name="restaurant_id" type="uuid">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
+            <column name="restaurant_name" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
             <column name="owner" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
@@ -172,7 +184,7 @@
             <column name="restaurant_status" type="varchar(36)">
                 <constraints nullable="false"/>
             </column>
-            <column name="creation_date" type="varchar(36)">
+            <column name="creation_date" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="delivery_zone_id" type="uuid">
@@ -194,10 +206,10 @@
             <column name="courier_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
-            <column name="from" type="datetime">
+            <column name="from" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="till" type="datetime">
+            <column name="till" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="completed_deliveries" type="int">

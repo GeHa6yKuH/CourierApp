@@ -9,7 +9,8 @@
     <changeSet author="b.podalevics" id="insert test data into courier table 1">
         <insert tableName="courier">
             <column name="courier_id" value="6453d453-0e33-41ec-aebd-637c5e6bb786"/>
-            <column name="registration_date" value="13.11.2023"/>
+            <column name="courier_name" value="Anatoli Grenz"/>
+            <column name="registration_date" value="2023-10-12"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
             <column name="courier_status" value="online"/>
             <column name="phone_number" value="+37123977865"/>
@@ -31,7 +32,8 @@
     <changeSet author="b.podalevics" id="insert test data into courier table 2">
         <insert tableName="courier">
             <column name="courier_id" value="dca55a7d-a8db-4777-9daa-97c823277dbf"/>
-            <column name="registration_date" value="12.03.2023"/>
+            <column name="courier_name" value="Alex Karadin"/>
+            <column name="registration_date" value="2023-10-24"/>
             <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
             <column name="courier_status" value="offline"/>
             <column name="phone_number" value="+37123309344"/>
@@ -45,7 +47,8 @@
     <changeSet author="b.podalevics" id="insert test data into courier table 3">
         <insert tableName="courier">
             <column name="courier_id" value="8035c414-89a8-40e1-a914-83b65388a1f5"/>
-            <column name="registration_date" value="02.04.2023"/>
+            <column name="courier_name" value="Reno Logan"/>
+            <column name="registration_date" value="2023-05-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
             <column name="courier_status" value="offline"/>
             <column name="phone_number" value="+37121234344"/>

@@ -2,6 +2,7 @@ package com.bogdan.courierapp.repository;
 
 import com.bogdan.courierapp.entity.Courier;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,8 @@ public interface TestRepository extends JpaRepository<Courier, UUID> {
     @Query("SELECT c FROM Courier c WHERE c.id = :id")
     Courier findCourierById(@PathVariable("id") UUID id);
 
+    @Modifying
+    @Query("update Courier c set c.courierName = :name where c.id = :uuid")
+    void updateCourierName(UUID uuid, String name);
 
 }

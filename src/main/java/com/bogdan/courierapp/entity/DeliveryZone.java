@@ -1,9 +1,13 @@
 package com.bogdan.courierapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 
 import java.util.List;
@@ -15,24 +19,27 @@ import static jakarta.persistence.CascadeType.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "delivery_zone")
 @Entity
 public class DeliveryZone {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @UuidGenerator
     @Column(name = "delivery_zone_id")
     private UUID id;
 
-    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    @Column(name = "delivery_zone_name")
+    private String name;
+
+    @JsonManagedReference("restsRef")
+    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY, cascade = ALL)
     private List<Restaurant> restaurants;
 
-    public DeliveryZone(UUID id, List<Restaurant> restaurants) {
-        this.id = id;
-        this.restaurants = restaurants;
-    }
+    @JsonManagedReference("coursRef")
+    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY, cascade = ALL)
+    private List<Courier> couriers;
 
     @Override
     public boolean equals(Object o) {

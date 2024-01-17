@@ -1,9 +1,12 @@
 package com.bogdan.courierapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 
 import java.util.Objects;
@@ -18,15 +21,19 @@ import java.util.UUID;
 public class Product {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @UuidGenerator
     @Column(name = "product_id")
     private UUID id;
+
+    @Column(name = "product_name")
+    private String productName;
 
     @Column(name = "product_price")
     private double price;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", referencedColumnName = "restaurant_id")
+    @JsonBackReference("resRef")
     private Restaurant restaurant;
 
     @Column(name = "description")

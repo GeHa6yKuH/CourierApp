@@ -1,11 +1,14 @@
 package com.bogdan.courierapp.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -17,16 +20,21 @@ import java.util.UUID;
 @Entity
 public class SupportManager {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @UuidGenerator
     @Column(name = "manager_id")
     private UUID id;
 
     @Column(name = "manager_name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
+    @JsonBackReference("managRef")
     private AppRole appRole;
+
+    @OneToMany(mappedBy = "supportManager", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference("msRef")
+    private List<Courier> couriers;
 
 
     @Override

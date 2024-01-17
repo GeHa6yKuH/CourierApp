@@ -10,6 +10,7 @@
     <changeSet author="b.podalevics" id="insert test data into delivery_zone table 1">
         <insert tableName="delivery_zone">
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
+            <column name="delivery_zone_name" value="Berlin"/>
             <column name="restaurants" value="Regattalex, AlimPizza, OleksandrKebab"/>
         </insert>
     </changeSet>
@@ -17,6 +18,7 @@
     <changeSet author="b.podalevics" id="insert test data into delivery_zone table 2">
         <insert tableName="delivery_zone">
             <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
+            <column name="delivery_zone_name" value="Hamburg"/>
             <column name="restaurants" value="Kalinka, Seljd, AntiWibe"/>
         </insert>
     </changeSet>

@@ -1,10 +1,14 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.RestaurantStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
 import java.util.List;
@@ -20,15 +24,19 @@ import static jakarta.persistence.CascadeType.*;
 @Entity
 public class Restaurant {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @UuidGenerator
     @Column(name = "restaurant_id")
     private UUID id;
+
+    @Column(name = "restaurant_name")
+    private String restaurantName;
 
     @Column(name = "owner")
     private String owner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
+    @JsonBackReference("arRef")
     private AppRole appRole;
 
     @Column(name = "restaurant_status")
@@ -38,12 +46,13 @@ public class Restaurant {
     @Column(name = "creation_date")
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JsonBackReference("restsRef")
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
     private DeliveryZone deliveryZone;
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = ALL)
+    @JsonManagedReference("resRef")
     private List<Product> products;
 
     public Restaurant(UUID id, String owner, AppRole appRole, RestaurantStatus status, Date creationDate, DeliveryZone deliveryZone, List<Product> products) {

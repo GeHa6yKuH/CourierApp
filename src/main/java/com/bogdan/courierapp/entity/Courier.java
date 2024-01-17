@@ -1,6 +1,7 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.Courierstatus;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,11 +30,15 @@ public class Courier {
     @Column(name = "courier_id")
     private UUID id;
 
-    @Column(name = "registration_date")
-    private String registrationDate;
+    @Column(name = "courier_name")
+    private String courierName;
 
-    @OneToOne(cascade = {MERGE, PERSIST, REFRESH})
+    @Column(name = "registration_date")
+    private Date registrationDate;
+
+    @ManyToOne
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
+    @JsonBackReference("coursRef")
     private DeliveryZone deliveryZone;
 
     @Column(name = "courier_status")
@@ -46,16 +51,18 @@ public class Courier {
     @Column(name = "balance")
     private double balance;
 
-    @OneToMany(mappedBy = "courier", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    @OneToMany(mappedBy = "courier", fetch = FetchType.LAZY, cascade = ALL)
+    @JsonManagedReference("statsRef")
     private List<Statistics> statistics;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "support_manager_id", referencedColumnName = "manager_id")
+    @JsonBackReference("msRef")
     private SupportManager supportManager;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
+    @JsonBackReference("smRef")
     private AppRole appRole;
 
     @Override

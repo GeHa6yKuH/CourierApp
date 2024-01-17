@@ -1,10 +1,14 @@
 package com.bogdan.courierapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 
 import java.util.Date;
@@ -19,11 +23,12 @@ import java.util.UUID;
 @Entity
 public class Statistics {
     @Id
-    @GeneratedValue(generator = "UUID")
+    @UuidGenerator
     @Column(name = "statistics_id")
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JsonBackReference("statsRef")
     @JoinColumn(name = "courier_id", referencedColumnName = "courier_id")
     private Courier courier;
 

@@ -13,8 +13,8 @@
             <column name="courier_id" value="6453d453-0e33-41ec-aebd-637c5e6bb786"/>
             <column name="restaurant_id" value="86994b48-49a3-4fe9-862b-6da6bd9f869f"/>
             <column name="order_status" value="delivered"/>
-            <column name="placed_at" value="05.06.2023"/>
-            <column name="delivered_at" value="05.06.2023"/>
+            <column name="placed_at" value="2023-01-16 12:30:45"/>
+            <column name="delivered_at" value="2022-01-16 12:56:40"/>
         </insert>
     </changeSet>
 
@@ -24,8 +24,8 @@
             <column name="courier_id" value="dca55a7d-a8db-4777-9daa-97c823277dbf"/>
             <column name="restaurant_id" value="63fbdcb5-6360-4af3-8701-858f7a4d6467"/>
             <column name="order_status" value="placed"/>
-            <column name="placed_at" value="06.06.2023"/>
-            <column name="delivered_at" value="06.06.2023"/>
+            <column name="placed_at" value="2023-02-16 15:36:12"/>
+            <column name="delivered_at" value="2023-02-16 16:30:34"/>
         </insert>
     </changeSet>
 

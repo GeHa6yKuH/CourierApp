@@ -1,24 +1,32 @@
 package com.bogdan.courierapp.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.UuidGenerator;
 
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
+import static jakarta.persistence.CascadeType.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_role")
 @Entity
 public class AppRole {
 
     @Id
-//    @GeneratedValue(generator = "UUID")
+    @UuidGenerator
     @Column(name = "app_role_id")
     private UUID id;
 
@@ -28,11 +36,17 @@ public class AppRole {
     @Column(name = "possibilities")
     private String possibilities;
 
-    public AppRole(UUID id, String name, String possibilities) {
-        this.id = id;
-        this.name = name;
-        this.possibilities = possibilities;
-    }
+    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY, cascade = {MERGE, PERSIST, REFRESH})
+    @JsonManagedReference("smRef")
+    private List<Courier> couriers;
+
+    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY, cascade = {MERGE, PERSIST, REFRESH})
+    @JsonManagedReference("arRef")
+    private List<Restaurant> restaurants;
+
+    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY, cascade = {MERGE, PERSIST, REFRESH})
+    @JsonManagedReference("managRef")
+    private List<SupportManager> managers;
 
     @Override
     public boolean equals(Object o) {

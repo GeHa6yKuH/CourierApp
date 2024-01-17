@@ -10,10 +10,11 @@
     <changeSet author="b.podalevics" id="insert test data into restaurant table 1">
         <insert tableName="restaurant">
             <column name="restaurant_id" value="86994b48-49a3-4fe9-862b-6da6bd9f869f"/>
+            <column name="restaurant_name" value="Pizza-Pasta"/>
             <column name="owner" value="Marius Iceberg"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
             <column name="restaurant_status" value="active"/>
-            <column name="creation_date" value="12.04.2023"/>
+            <column name="creation_date" value="2021-06-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
         </insert>
     </changeSet>
@@ -21,10 +22,11 @@
     <changeSet author="b.podalevics" id="insert test data into restaurant table 2">
         <insert tableName="restaurant">
             <column name="restaurant_id" value="63fbdcb5-6360-4af3-8701-858f7a4d6467"/>
+            <column name="restaurant_name" value="Sushi-Rolli"/>
             <column name="owner" value="Antony Tilt"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
             <column name="restaurant_status" value="offline"/>
-            <column name="creation_date" value="12.05.2023"/>
+            <column name="creation_date" value="2013-06-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
         </insert>
     </changeSet>
@@ -32,10 +34,11 @@
     <changeSet author="b.podalevics" id="insert test data into restaurant table 3">
         <insert tableName="restaurant">
             <column name="restaurant_id" value="29102365-460d-4301-8117-4e62441d9c7f"/>
+            <column name="restaurant_name" value="Better Soi"/>
             <column name="owner" value="Anatoly Bargel"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
             <column name="restaurant_status" value="active"/>
-            <column name="creation_date" value="23.05.2023"/>
+            <column name="creation_date" value="22021-08-14"/>
             <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
         </insert>
     </changeSet>
