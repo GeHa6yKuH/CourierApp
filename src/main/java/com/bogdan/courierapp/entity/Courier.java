@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 
 import java.util.Date;
@@ -19,6 +20,7 @@ import static jakarta.persistence.CascadeType.*;
 
 @Getter
 @Setter
+@Accessors(fluent = false, chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "courier")

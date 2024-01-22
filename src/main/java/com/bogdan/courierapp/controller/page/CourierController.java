@@ -1,7 +1,11 @@
 package com.bogdan.courierapp.controller.page;
 
+import com.bogdan.courierapp.dto.CourierDto;
+import com.bogdan.courierapp.dto.CourierUpdate;
 import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.service.inter.TestService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,21 +14,23 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/test")
+@RequestMapping("/courier")
+@Tag(description = "courier managing controller", name = "courier-controller")
 public class CourierController {
 
     private final TestService testService;
-    @GetMapping("/getcr/{id}")
+    @GetMapping("/{id}")
+    @Operation(summary = "basic courier get rest method by id")
     public Courier getCourierById(@PathVariable("id") String id){
         return testService.getCourierById(id);
     }
 
-    @PostMapping("/createCourier")
+    @PostMapping
     public Courier createCourier(@RequestBody Courier courier) {
         return testService.createCourier(courier);
     }
 
-    @PutMapping("/updateCourier/")
+    @PutMapping
     public ResponseEntity<String> updateCourierName(
             @RequestParam String id,
             @RequestParam String name) {
@@ -32,10 +38,21 @@ public class CourierController {
         return ResponseEntity.ok("Courier with ID " + id + " has been update name " + name);
     }
 
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable("id") String courierId) {
         testService.deleteById(courierId);
         return ResponseEntity.ok("Courier with ID " + courierId + " has been deleted");
+    }
+
+    @PutMapping("/complex")
+    public ResponseEntity<Courier> updateCourierMoreInfo(@RequestBody CourierUpdate courierUpdate) {
+        Courier courier = testService.updateComplexCourier(courierUpdate);
+        return ResponseEntity.ok(courier);
+    }
+
+    @GetMapping("/do/{iddto}")
+    public CourierDto getCourierDtoById(@PathVariable("iddto") String id){
+        return testService.getCourierDtoById(id);
     }
 
 }

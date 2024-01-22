@@ -1,7 +1,13 @@
 package com.bogdan.courierapp.service.impl;
 
+import com.bogdan.courierapp.dto.CourierDto;
+import com.bogdan.courierapp.dto.CourierUpdate;
 import com.bogdan.courierapp.entity.Courier;
+import com.bogdan.courierapp.entity.enums.Courierstatus;
+import com.bogdan.courierapp.exception.CourierNotFoundException;
+import com.bogdan.courierapp.mapper.CourierMapper;
 import com.bogdan.courierapp.repository.TestRepository;
+import com.bogdan.courierapp.service.inter.DeliveryZoneService;
 import com.bogdan.courierapp.service.inter.TestService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +19,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class TestServiceImpl implements TestService {
 
+    private final DeliveryZoneService deliveryZoneService;
+
     private final TestRepository testRepository;
+
+    private final CourierMapper courierMapper;
 
     @Override
     public Courier getCourierById(String id) {
@@ -33,8 +43,25 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    @Transactional
+    public CourierDto getCourierDtoById(String id) {
+        return courierMapper.toDto(testRepository.findById(UUID.fromString(id)).orElseThrow(() -> new CourierNotFoundException("Courier with id: " + " not found")));
+    }
+
+    @Override
+//    @Transactional
     public void deleteById(String courierId) {
         testRepository.deleteById(UUID.fromString(courierId));
+    }
+
+    @Override
+    @Transactional
+    public Courier updateComplexCourier(CourierUpdate courierUpdate) {
+        Courier courier = testRepository.findById(courierUpdate.courierID()).orElseThrow(() -> new CourierNotFoundException("Courier with id: " + courierUpdate.courierID() + " not found"));
+        courier.setDeliveryZone(deliveryZoneService.getReferenceById(courierUpdate.deliveryZoneId()))
+                .setStatus(Courierstatus.valueOf(courierUpdate.status()))
+                .setPhoneNumber(courierUpdate.phoneNumber())
+                .setBalance(courierUpdate.balance());
+        // todo: make Validation
+        return testRepository.saveAndFlush(courier);
     }
 }

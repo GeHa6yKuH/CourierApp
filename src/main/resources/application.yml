@@ -1,3 +1,8 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
 spring:
   main:
     banner-mode: off
@@ -12,3 +17,20 @@ spring:
 
   jpa:
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+springdoc:
+  webjars:
+    prefix:
+  swagger-ui:
+    path: /CourierApp/v3/swagger-ui.html
+    disable-swagger-default-url: true
+#      operation-sorter: method
+    enabled: true
+    operationsSorter: alpha
+    tagsSorter: alpha
+    doc-expansion: none
+  api-docs:
+    enabled: true
+    path: /CourierApp/v3/api-docs
