@@ -7,13 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(name = "/rest")
+@RequestMapping("/rest")
 @RequiredArgsConstructor
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
 
-    @PutMapping(name = "/create")
+    @PostMapping("/create")
     public Restaurant createRest(@RequestBody RestaurantDto restaurantDto) {
         return restaurantService.create(restaurantDto);
     }

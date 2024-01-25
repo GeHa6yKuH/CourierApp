@@ -18,9 +18,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantMapper restaurantMapper;
     @Override
     public Restaurant create(RestaurantDto restaurantDto) {
-//        Restaurant restaurant = restaurantRepository.getRestaurantByRestaurantName(restaurantDto.getRestaurantName());
-//        if (restaurant != null) throw new RestaurantWithThisNameAlreadyExistsException();
-//        else restaurantRepository.save(restaurantMapper.toEntity(restaurantDto));
+        Restaurant restaurant = restaurantRepository.getRestaurantByRestaurantName(restaurantDto.getRestaurantName());
+        if (restaurant != null) throw new RestaurantWithThisNameAlreadyExistsException();
+        else restaurantRepository.save(restaurantMapper.toEntity(restaurantDto));
+//        System.out.println("*******************");
         return restaurantRepository.getRestaurantByRestaurantName(restaurantDto.getRestaurantName());
     }
 }

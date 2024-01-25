@@ -34,7 +34,7 @@ public class Restaurant {
     @Column(name = "owner")
     private String owner;
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL)
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
     @JsonBackReference("arRef")
     private AppRole appRole;
@@ -46,7 +46,7 @@ public class Restaurant {
     @Column(name = "creation_date")
     private Date creationDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = ALL)
     @JsonBackReference("restsRef")
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
     private DeliveryZone deliveryZone;
