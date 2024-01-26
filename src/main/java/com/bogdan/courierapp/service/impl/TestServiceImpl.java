@@ -9,9 +9,9 @@ import com.bogdan.courierapp.mapper.CourierMapper;
 import com.bogdan.courierapp.repository.TestRepository;
 import com.bogdan.courierapp.service.inter.DeliveryZoneService;
 import com.bogdan.courierapp.service.inter.TestService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 

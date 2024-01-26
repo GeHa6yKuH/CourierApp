@@ -1,8 +1,6 @@
 package com.bogdan.courierapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +9,6 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
 
-import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
