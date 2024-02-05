@@ -4,14 +4,17 @@ import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
 import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.service.inter.TestService;
+import com.bogdan.courierapp.validation.UUIDChecker;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@Validated
 @RestController
 @AllArgsConstructor
 @RequestMapping("/courier")
@@ -21,7 +24,7 @@ public class CourierController {
     private final TestService testService;
     @GetMapping("/{id}")
     @Operation(summary = "basic courier get rest method by id")
-    public Courier getCourierById(@PathVariable("id") String id){
+    public Courier getCourierById(@UUIDChecker @PathVariable("id") String id){
         return testService.getCourierById(id);
     }
 
@@ -50,8 +53,8 @@ public class CourierController {
         return ResponseEntity.ok(courier);
     }
 
-    @GetMapping("/do/{iddto}")
-    public CourierDto getCourierDtoById(@PathVariable("iddto") String id){
+    @GetMapping("/do/{id}")
+    public CourierDto getCourierDtoById(@PathVariable("id") String id){
         return testService.getCourierDtoById(id);
     }
 

@@ -4,6 +4,7 @@ import com.bogdan.courierapp.dto.RestaurantDto;
 import com.bogdan.courierapp.entity.Restaurant;
 import com.bogdan.courierapp.service.inter.RestaurantService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
