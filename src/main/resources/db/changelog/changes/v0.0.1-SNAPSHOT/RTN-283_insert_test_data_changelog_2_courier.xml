@@ -10,6 +10,7 @@
         <insert tableName="courier">
             <column name="courier_id" value="6453d453-0e33-41ec-aebd-637c5e6bb786"/>
             <column name="courier_name" value="Anatoli Grenz"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="registration_date" value="2023-10-12"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
             <column name="courier_status" value="online"/>
@@ -33,6 +34,7 @@
         <insert tableName="courier">
             <column name="courier_id" value="dca55a7d-a8db-4777-9daa-97c823277dbf"/>
             <column name="courier_name" value="Alex Karadin"/>
+            <column name="password" value="$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i"/>
             <column name="registration_date" value="2023-10-24"/>
             <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
             <column name="courier_status" value="offline"/>
@@ -48,6 +50,7 @@
         <insert tableName="courier">
             <column name="courier_id" value="8035c414-89a8-40e1-a914-83b65388a1f5"/>
             <column name="courier_name" value="Reno Logan"/>
+            <column name="password" value="$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i"/>
             <column name="registration_date" value="2023-05-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
             <column name="courier_status" value="offline"/>

@@ -3,6 +3,16 @@ server:
   servlet:
     context-path: /
 
+#logging:
+#  file:
+#    name: logback.log
+#
+#  level:
+#    root: info
+#    org.hibernate : error
+#    org.springframework.web : debug
+
+
 spring:
   main:
     banner-mode: off
@@ -14,6 +24,7 @@ spring:
 
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml
+
 
   jpa:
     show-sql: true

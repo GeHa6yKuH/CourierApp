@@ -3,29 +3,28 @@ package com.bogdan.courierapp.entity;
 import com.bogdan.courierapp.entity.enums.Courierstatus;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
+import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 import static jakarta.persistence.CascadeType.*;
 
 
 @Getter
 @Setter
+@Builder
 @Accessors(fluent = false, chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "courier")
 @Entity
-public class Courier {
+public class Courier implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -37,6 +36,9 @@ public class Courier {
 
     @Column(name = "registration_date")
     private Date registrationDate;
+
+    @Column(name = "password")
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
@@ -93,5 +95,35 @@ public class Courier {
                 ", supportManager=" + supportManager +
                 ", appRole=" + appRole +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + appRole.getName()));
+    }
+
+    @Override
+    public String getUsername() {
+        return courierName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

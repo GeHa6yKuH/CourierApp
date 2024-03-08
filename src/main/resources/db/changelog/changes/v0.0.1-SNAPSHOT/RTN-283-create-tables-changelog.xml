@@ -36,6 +36,9 @@
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="courier_name" type="varchar(45)">
+                <constraints nullable="true" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="registration_date" type="date">

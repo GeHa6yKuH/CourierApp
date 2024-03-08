@@ -4,10 +4,10 @@ import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
 import com.bogdan.courierapp.entity.Courier;
 
-public interface TestService {
+public interface CourierService {
     Courier getCourierById(String id);
 
-    Courier createCourier(Courier courier);
+    Courier createCourier(CourierDto courier);
 
     void updateCourierName(String id, String name);
 
