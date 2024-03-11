@@ -100,15 +100,13 @@
             <column name="manager_name" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
-        </createTable>
-    </changeSet>
-
-    <changeSet author="your_name" id="add appRole to manager">
-        <addColumn tableName="manager">
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="app_role_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
-        </addColumn>
+        </createTable>
     </changeSet>
 
 
@@ -123,7 +121,7 @@
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="courier_id" type="uuid">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="restaurant_id" type="uuid">
                 <constraints nullable="false"/>
@@ -135,7 +133,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="delivered_at" type="timestamp">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>

@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 
 import java.util.*;
@@ -24,7 +24,7 @@ import static jakarta.persistence.CascadeType.*;
 @AllArgsConstructor
 @Table(name = "courier")
 @Entity
-public class Courier implements UserDetails {
+public class Courier /*implements UserDetails*/ {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -55,7 +55,7 @@ public class Courier implements UserDetails {
     @Column(name = "balance")
     private double balance;
 
-    @OneToMany(mappedBy = "courier", fetch = FetchType.LAZY, cascade = ALL)
+    @OneToMany(mappedBy = "courier")
     @JsonManagedReference("statsRef")
     private List<Statistics> statistics;
 
@@ -97,33 +97,33 @@ public class Courier implements UserDetails {
                 '}';
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + appRole.getName()));
-    }
-
-    @Override
-    public String getUsername() {
-        return courierName;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return List.of(new SimpleGrantedAuthority("ROLE_" + appRole.getName()));
+//    }
+//
+//    @Override
+//    public String getUsername() {
+//        return courierName;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 }

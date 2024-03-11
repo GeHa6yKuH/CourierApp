@@ -11,6 +11,7 @@
         <insert tableName="manager">
             <column name="manager_id" value="91069e9d-683b-4fd1-93bc-f135207b7e73"/>
             <column name="manager_name" value="Alisa Welley"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
         </insert>
     </changeSet>
@@ -19,6 +20,7 @@
         <insert tableName="manager">
             <column name="manager_id" value="4829faa8-4946-410b-b859-f595d537e949"/>
             <column name="manager_name" value="Alexei Treck"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
         </insert>
     </changeSet>
@@ -27,6 +29,7 @@
         <insert tableName="manager">
             <column name="manager_id" value="e1105616-383e-4e57-94da-f860bb08552d"/>
             <column name="manager_name" value="Sandra Suar"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="f6604fdd-71db-4e8c-a884-61d7de2b40cc"/>
         </insert>
     </changeSet>

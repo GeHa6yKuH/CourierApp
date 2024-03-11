@@ -2,11 +2,14 @@ package com.bogdan.courierapp.service.impl;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
+import com.bogdan.courierapp.dto.SupportManagerDto;
 import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.DeliveryZone;
+import com.bogdan.courierapp.entity.SupportManager;
 import com.bogdan.courierapp.entity.enums.Courierstatus;
 import com.bogdan.courierapp.exception.CourierNotFoundException;
 import com.bogdan.courierapp.mapper.CourierMapper;
+import com.bogdan.courierapp.mapper.SupportManagerMapper;
 import com.bogdan.courierapp.repository.CourierRepository;
 import com.bogdan.courierapp.repository.DeliveryZoneRepository;
 import com.bogdan.courierapp.service.inter.DeliveryZoneService;
@@ -26,6 +29,8 @@ public class CourierServiceImpl implements CourierService {
     private final DeliveryZoneService deliveryZoneService;
 
     private final CourierRepository courierRepository;
+
+    private final SupportManagerMapper supportManagerMapper;
 
     private final CourierMapper courierMapper;
 
@@ -58,6 +63,11 @@ public class CourierServiceImpl implements CourierService {
     public void updateCourierName(String id, String name) {
         courierRepository.updateCourierName(UUID.fromString(id), name);
     }
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @Override
+    public void updateCourierManager(String id, String managerId) {
+       courierRepository.updateCourierManager(UUID.fromString(id),UUID.fromString(managerId));
+    }
 
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
@@ -67,8 +77,8 @@ public class CourierServiceImpl implements CourierService {
                         new CourierNotFoundException("Courier with id: " + " not found")));
     }
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     @Override
-    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteById(String courierId) {
         courierRepository.deleteById(UUID.fromString(courierId));
     }
@@ -82,7 +92,6 @@ public class CourierServiceImpl implements CourierService {
                 .setStatus(Courierstatus.valueOf(courierUpdate.status()))
                 .setPhoneNumber(courierUpdate.phoneNumber())
                 .setBalance(courierUpdate.balance());
-        // todo: make Validation
         return courierRepository.saveAndFlush(courier);
     }
 }

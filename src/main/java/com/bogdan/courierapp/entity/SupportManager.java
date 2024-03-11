@@ -2,10 +2,7 @@ package com.bogdan.courierapp.entity;
 
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
@@ -18,7 +15,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "manager")
 @Entity
+@Builder
 public class SupportManager {
+
     @Id
     @UuidGenerator
     @Column(name = "manager_id")
@@ -27,9 +26,12 @@ public class SupportManager {
     @Column(name = "manager_name")
     private String name;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
-    @JsonBackReference("managRef")
+    @JsonBackReference("manageRef")
     private AppRole appRole;
 
     @OneToMany(mappedBy = "supportManager", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

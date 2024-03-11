@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -33,5 +34,20 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant getRestaurantById(String id) {
         return restaurantRepository.getReferenceById(UUID.fromString(id));
+    }
+
+    @Override
+    public List<Restaurant> getRestaurantsByDeliveryZoneId(String deliveryZoneId) {
+        return restaurantRepository.getRestaurantsByDeliveryZoneId(deliveryZoneId);
+    }
+
+    @Override
+    public List<Restaurant> getRestaurantsByOwner(String owner) {
+        return restaurantRepository.getRestaurantsByOwner(owner);
+    }
+
+    @Override
+    public void deleteById(String restaurantId) {
+        restaurantRepository.deleteById(UUID.fromString(restaurantId));
     }
 }

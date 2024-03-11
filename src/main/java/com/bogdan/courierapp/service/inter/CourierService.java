@@ -2,7 +2,9 @@ package com.bogdan.courierapp.service.inter;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
+import com.bogdan.courierapp.dto.SupportManagerDto;
 import com.bogdan.courierapp.entity.Courier;
+import com.bogdan.courierapp.entity.SupportManager;
 
 public interface CourierService {
     Courier getCourierById(String id);
@@ -10,6 +12,8 @@ public interface CourierService {
     Courier createCourier(CourierDto courier);
 
     void updateCourierName(String id, String name);
+
+    void updateCourierManager(String id, String managerId);
 
     void deleteById(String courierId);
 

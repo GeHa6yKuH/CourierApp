@@ -4,10 +4,7 @@ import com.bogdan.courierapp.entity.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 
@@ -26,6 +23,7 @@ import static jakarta.persistence.CascadeType.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "order")
+@Builder
 public class Order {
 
     @Id

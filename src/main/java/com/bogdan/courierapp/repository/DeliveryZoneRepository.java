@@ -13,6 +13,4 @@ import java.util.UUID;
 @Repository
 public interface DeliveryZoneRepository extends JpaRepository<DeliveryZone, UUID> {
 
-
-
 }

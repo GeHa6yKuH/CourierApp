@@ -2,7 +2,9 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
+import com.bogdan.courierapp.dto.SupportManagerDto;
 import com.bogdan.courierapp.entity.Courier;
+import com.bogdan.courierapp.entity.SupportManager;
 import com.bogdan.courierapp.service.inter.CourierService;
 import com.bogdan.courierapp.validation.UUIDChecker;
 import io.swagger.v3.oas.annotations.Operation;
@@ -59,18 +61,30 @@ public class CourierController {
             @RequestParam String id,
             @RequestParam String name) {
         courierService.updateCourierName(id, name);
-        return ResponseEntity.ok("Courier with ID " + id + " has been update name " + name);
+        return ResponseEntity.ok("Courier with ID " + id + " updated name to  " + name);
     }
 
+    @PutMapping("/updating")
+    @Operation(summary = "basic courier put rest method modifying courier in database",
+            parameters = {
+                    // todo parameters class check
+            }
+    )
+    public ResponseEntity<String> updateCourierManager(
+            @RequestParam String id,
+            @RequestParam String managerId) {
+        courierService.updateCourierManager(id, managerId);
+        return ResponseEntity.ok("Courier with ID " + id + " has new manager with id " + managerId);
+    }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     @Operation(summary = "basic courier rest delete method by provided id",
             description = "delets a curier from database by given id",
             responses = {
                     @ApiResponse(responseCode = "200", description = "courier successfully deleted"),
                     @ApiResponse(responseCode = "404", description = "no such courier / can not be deleted")
             })
-    public ResponseEntity<String> deleteById(@PathVariable("id") String courierId) {
+    public ResponseEntity<String> deleteById(@PathVariable("id") @UUIDChecker String courierId) {
         courierService.deleteById(courierId);
         return ResponseEntity.ok("Courier with ID " + courierId + " has been deleted");
     }
