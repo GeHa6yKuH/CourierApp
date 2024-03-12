@@ -30,7 +30,7 @@ public class Statistics {
     @Column(name = "completed_deliveries")
     private int completedDeliveries;
 
-    @Column(name = "from")
+    @Column(name = "start_date")
     private Date from;
 
     @Column(name = "till")

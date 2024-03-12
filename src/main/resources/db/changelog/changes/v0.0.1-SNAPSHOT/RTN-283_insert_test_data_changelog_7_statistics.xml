@@ -11,10 +11,10 @@
         <insert tableName="statistics">
             <column name="statistics_id" value="25e65c2d-0d88-41fb-a9b1-085d3a126318"/>
             <column name="courier_id" value="6453d453-0e33-41ec-aebd-637c5e6bb786"/>
-            <column name="from" value="2021-06-24"/>
-            <column name="till" value="2021-07-24"/>
             <column name="completed_deliveries" value="100"/>
             <column name="earned_money" value="423.36"/>
+            <column name="start_date" valueDate="2021-06-24"/>
+            <column name="till" valueDate="2021-07-24"/>
         </insert>
     </changeSet>
 
@@ -22,10 +22,10 @@
         <insert tableName="statistics">
             <column name="statistics_id" value="89e23605-46a6-4e40-b48d-bb677fde1d2c"/>
             <column name="courier_id" value="dca55a7d-a8db-4777-9daa-97c823277dbf"/>
-            <column name="from" value="2021-08-15"/>
-            <column name="till" value="2021-09-24"/>
             <column name="completed_deliveries" value="130"/>
             <column name="earned_money" value="479.89"/>
+            <column name="start_date" valueDate="2021-08-15"/>
+            <column name="till" valueDate="2021-09-24"/>
         </insert>
     </changeSet>
 
@@ -33,11 +33,13 @@
         <insert tableName="statistics">
             <column name="statistics_id" value="77ecf268-36b8-438b-8130-333c2d735d37"/>
             <column name="courier_id" value="8035c414-89a8-40e1-a914-83b65388a1f5"/>
-            <column name="from" value="2021-06-24"/>
-            <column name="till" value="2021-06-27"/>
             <column name="completed_deliveries" value="114"/>
             <column name="earned_money" value="460.45"/>
+            <column name="start_date" valueDate="2021-06-24"/>
+            <column name="till" valueDate="2021-06-27"/>
         </insert>
     </changeSet>
+
+
 
 </databaseChangeLog>

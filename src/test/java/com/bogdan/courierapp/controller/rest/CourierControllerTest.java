@@ -25,7 +25,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 
-
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -154,15 +153,4 @@ class CourierControllerTest {
 
         return objectMapper.readValue(courierJson, Courier.class);
     }
-
-
-
-//    @Test
-//    void findByIdPositiveTest() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.get("/product/productId/" + PRODUCT_ID)
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.content().string(containsString(
-//                        PRODUCT_ID)));
-//    }
 }

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getAllOrdersByRestaurant(String restaurantId) {
-        return orderRepository.findByRestaurantId(restaurantId);
+        return orderRepository.findByRestaurantId(UUID.fromString(restaurantId));
     }
 
     @Override
@@ -36,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = Order.builder()
                 .restaurantId(orderDto.getRestaurantId())
                 .status(orderDto.getStatus())
-                .placedAt(LocalDate.ofEpochDay(System.currentTimeMillis()))
+                .placedAt(new Date(System.currentTimeMillis()))
                 .build();
         return orderRepository.save(order);
     }

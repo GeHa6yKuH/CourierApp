@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.catalina.LifecycleState;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -36,6 +38,9 @@ public class Product {
 
     @Column(name = "description")
     private String description;
+
+//    @ManyToMany
+//    private List<Order> orders;
 
     public Product(UUID id, double price, Restaurant restaurant, String description) {
         this.id = id;

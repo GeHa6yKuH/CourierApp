@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, UUID> {
     @Query("SELECT o FROM Order o WHERE o.restaurantId= :restaurantId")
-    List<Order> findByRestaurantId(String restaurantId);
+    List<Order> findByRestaurantId(UUID restaurantId);
 }

@@ -161,6 +161,8 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <sql>ALTER TABLE product ALTER COLUMN product_price TYPE float USING product_price::float</sql>
     </changeSet>
 
     <changeSet author="b.podalevics" id="create restaurant table">
@@ -207,7 +209,7 @@
             <column name="courier_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
-            <column name="from" type="date">
+            <column name="start_date" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="till" type="date">

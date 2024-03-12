@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.time.LocalDate;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -18,7 +19,7 @@ import static jakarta.persistence.CascadeType.ALL;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "order")
+@Table(name = "\"order\"")
 @Builder
 public class Order {
 
@@ -27,8 +28,8 @@ public class Order {
     @Column(name = "order_id")
     private UUID id;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = ALL)
-    private List<Product> productList;
+//    @ManyToMany(mappedBy = "orders")
+//    private List<Product> productList;
 
     @OneToOne
     @JoinColumn(name = "courier_id", referencedColumnName = "courier_id")
@@ -42,10 +43,10 @@ public class Order {
     private OrderStatus status;
 
     @Column(name = "placed_at")
-    private LocalDate placedAt;
+    private Date placedAt;
 
     @Column(name = "delivered_at")
-    private LocalDate deliveredAt;
+    private Date deliveredAt;
 
     @Override
     public boolean equals(Object o) {
@@ -64,7 +65,6 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", productList=" + productList +
                 ", courier=" + courier +
                 ", restaurantId=" + restaurantId +
                 ", status=" + status +

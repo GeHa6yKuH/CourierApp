@@ -40,11 +40,11 @@ CREATE TABLE manager (
 -- ChangeSet: create order table
 CREATE TABLE "order" (
                                         order_id uuid PRIMARY KEY NOT NULL UNIQUE,
-                                        courier_id uuid NOT NULL,
+                                        courier_id uuid,
                                         restaurant_id uuid NOT NULL,
                                         order_status VARCHAR(36) NOT NULL,
                                         placed_at TIMESTAMP NOT NULL,
-                                        delivered_at TIMESTAMP NOT NULL
+                                        delivered_at TIMESTAMP
     );
 
 -- ChangeSet: create product table
@@ -55,6 +55,8 @@ CREATE TABLE product (
                                         restaurant_id uuid NOT NULL,
                                         description TEXT NOT NULL
     );
+
+ALTER TABLE product ALTER COLUMN product_price TYPE float USING product_price::float;
 
 -- ChangeSet: create restaurant table
 CREATE TABLE restaurant (
@@ -71,7 +73,7 @@ CREATE TABLE restaurant (
 CREATE TABLE statistics (
                                         statistics_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         courier_id uuid NOT NULL,
-                                        "from" DATE NOT NULL,
+                                        start_date DATE NOT NULL,
                                         till DATE NOT NULL,
                                         completed_deliveries INT,
                                         earned_money DECIMAL(6,2) NOT NULL
@@ -214,15 +216,15 @@ WHERE restaurant_status = 'OFFLINE';
 -- Insert data to test db statistics
 
 -- ChangeSet: insert test data into statistics table 1
-INSERT INTO statistics (statistics_id, courier_id, "from", till, completed_deliveries, earned_money)
+INSERT INTO statistics (statistics_id, courier_id, start_date, till, completed_deliveries, earned_money)
 VALUES ('25e65c2d-0d88-41fb-a9b1-085d3a126318', '6453d453-0e33-41ec-aebd-637c5e6bb786', '2021-06-24', '2021-07-24', 100, 423.36);
 
 -- ChangeSet: insert test data into statistics table 2
-INSERT INTO statistics (statistics_id, courier_id, "from", till, completed_deliveries, earned_money)
+INSERT INTO statistics (statistics_id, courier_id, start_date, till, completed_deliveries, earned_money)
 VALUES ('89e23605-46a6-4e40-b48d-bb677fde1d2c', 'dca55a7d-a8db-4777-9daa-97c823277dbf', '2021-08-15', '2021-09-24', 130, 479.89);
 
 -- ChangeSet: insert test data into statistics table 3
-INSERT INTO statistics (statistics_id, courier_id, "from", till, completed_deliveries, earned_money)
+INSERT INTO statistics (statistics_id, courier_id, start_date, till, completed_deliveries, earned_money)
 VALUES ('77ecf268-36b8-438b-8130-333c2d735d37', '8035c414-89a8-40e1-a914-83b65388a1f5', '2021-06-24', '2021-06-27', 114, 460.45);
 
 -- Insert data to test db manager
