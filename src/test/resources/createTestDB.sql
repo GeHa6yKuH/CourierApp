@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS statistics (
                                         courier_id UUID NOT NULL,
                                         "from" DATE NOT NULL,
                                         "till" DATE NOT NULL,
-                                        completed_deliveries INT NOT NULL,
+                                        completed_deliveries INT,
                                         earned_money DECIMAL(6,2) NOT NULL
     );
 

@@ -2,9 +2,7 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
-import com.bogdan.courierapp.dto.SupportManagerDto;
 import com.bogdan.courierapp.entity.Courier;
-import com.bogdan.courierapp.entity.SupportManager;
 import com.bogdan.courierapp.service.inter.CourierService;
 import com.bogdan.courierapp.validation.UUIDChecker;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,14 +23,15 @@ import org.springframework.web.bind.annotation.*;
 public class CourierController {
 
     private final CourierService courierService;
+
     @GetMapping("/{id}")
     @Operation(summary = "basic courier get rest method by id",
             description = "returns a curier from database for given id",
             responses = {
-                @ApiResponse(responseCode = "200", description = "courier found"),
+                    @ApiResponse(responseCode = "200", description = "courier found"),
                     @ApiResponse(responseCode = "500", description = "no such courier")
             })
-    public Courier getCourierById(@UUIDChecker @PathVariable("id") String id){
+    public Courier getCourierById(@UUIDChecker @PathVariable("id") String id) {
         return courierService.getCourierById(id);
     }
 
@@ -54,7 +53,7 @@ public class CourierController {
     @PutMapping
     @Operation(summary = "basic courier put rest method modifying courier in database",
             parameters = {
-                // todo parameters class check
+                    // todo parameters class check
             }
     )
     public ResponseEntity<String> updateCourierName(
@@ -113,7 +112,7 @@ public class CourierController {
                     @ApiResponse(responseCode = "404", description = "no such courier")
             }
     )
-    public CourierDto getCourierDtoById(@PathVariable("id") String id){
+    public CourierDto getCourierDtoById(@PathVariable("id") String id) {
         return courierService.getCourierDtoById(id);
     }
 

@@ -10,7 +10,6 @@ import com.bogdan.courierapp.repository.AppRoleRepository;
 import com.bogdan.courierapp.repository.SupportManagerRepository;
 import com.bogdan.courierapp.service.inter.SupportManagerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,6 +58,7 @@ public class SupportManagerImpl implements SupportManagerService {
     @Transactional(isolation = Isolation.REPEATABLE_READ)
     @Override
     public void deleteById(String managerId) {
+        getSupportManagerById(managerId);
         supportManagerRepository.deleteById(UUID.fromString(managerId));
     }
 }

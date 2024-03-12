@@ -2,18 +2,16 @@ package com.bogdan.courierapp.service.impl;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
-import com.bogdan.courierapp.dto.SupportManagerDto;
 import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.DeliveryZone;
-import com.bogdan.courierapp.entity.SupportManager;
 import com.bogdan.courierapp.entity.enums.Courierstatus;
 import com.bogdan.courierapp.exception.CourierNotFoundException;
+import com.bogdan.courierapp.exception.ErrorMessage;
 import com.bogdan.courierapp.mapper.CourierMapper;
-import com.bogdan.courierapp.mapper.SupportManagerMapper;
 import com.bogdan.courierapp.repository.CourierRepository;
 import com.bogdan.courierapp.repository.DeliveryZoneRepository;
-import com.bogdan.courierapp.service.inter.DeliveryZoneService;
 import com.bogdan.courierapp.service.inter.CourierService;
+import com.bogdan.courierapp.service.inter.DeliveryZoneService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -30,8 +28,6 @@ public class CourierServiceImpl implements CourierService {
 
     private final CourierRepository courierRepository;
 
-    private final SupportManagerMapper supportManagerMapper;
-
     private final CourierMapper courierMapper;
 
     private final DeliveryZoneRepository deliveryZoneRepository;
@@ -39,7 +35,8 @@ public class CourierServiceImpl implements CourierService {
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public Courier getCourierById(String id) {
-        return courierRepository.findCourierById(UUID.fromString(id));
+        return courierRepository.findById(UUID.fromString(id))
+                .orElseThrow(() -> new CourierNotFoundException(ErrorMessage.COURIER_NOT_FOUND));
     }
 
     @Override
@@ -61,12 +58,14 @@ public class CourierServiceImpl implements CourierService {
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void updateCourierName(String id, String name) {
+        getCourierById(id);
         courierRepository.updateCourierName(UUID.fromString(id), name);
     }
+
     @Transactional(isolation = Isolation.READ_COMMITTED)
     @Override
     public void updateCourierManager(String id, String managerId) {
-       courierRepository.updateCourierManager(UUID.fromString(id),UUID.fromString(managerId));
+        courierRepository.updateCourierManager(UUID.fromString(id), UUID.fromString(managerId));
     }
 
     @Override
@@ -80,6 +79,7 @@ public class CourierServiceImpl implements CourierService {
     @Transactional(isolation = Isolation.REPEATABLE_READ)
     @Override
     public void deleteById(String courierId) {
+        getCourierById(courierId);
         courierRepository.deleteById(UUID.fromString(courierId));
     }
 

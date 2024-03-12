@@ -214,7 +214,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="completed_deliveries" type="int">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="earned_money" type="decimal(6,2)">
                 <constraints nullable="false"/>

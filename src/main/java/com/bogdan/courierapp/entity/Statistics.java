@@ -2,13 +2,10 @@ package com.bogdan.courierapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
-
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -18,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "statistics")
 @Entity
+@Builder
 public class Statistics {
     @Id
     @UuidGenerator
@@ -31,6 +29,12 @@ public class Statistics {
 
     @Column(name = "completed_deliveries")
     private int completedDeliveries;
+
+    @Column(name = "from")
+    private Date from;
+
+    @Column(name = "till")
+    private Date till;
 
     @Column(name = "earned_money")
     private double earnedMoney;

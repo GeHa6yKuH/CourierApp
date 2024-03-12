@@ -30,22 +30,22 @@ public class SupportManagerController {
                     @ApiResponse(responseCode = "200", description = "manager found"),
                     @ApiResponse(responseCode = "500", description = "no such manager")
             })
-    public SupportManager getSupportManagerById(@UUIDChecker @PathVariable("id") String id){
+    public SupportManager getSupportManagerById(@UUIDChecker @PathVariable("id") String id) {
         return supportManagerService.getSupportManagerById(id);
     }
 
     @GetMapping("/nc")
-    public List<SupportManager> getManagersWithFirstOrLastName(@RequestParam String firstOrLastName){
+    public List<SupportManager> getManagersWithFirstOrLastName(@RequestParam String firstOrLastName) {
         return supportManagerService.getListOfManagersAfterPattern(firstOrLastName);
     }
 
     @GetMapping("/fa")
-    public List<SupportManager> getManagersWithName(@RequestParam String Name){
+    public List<SupportManager> getManagersWithName(@RequestParam String Name) {
         return supportManagerService.getListOfManagersAfterName(Name);
     }
 
     @PostMapping
-    public SupportManagerDto createSupportManagerDto(@RequestBody SupportManagerDto supportManagerDto){
+    public SupportManagerDto createSupportManagerDto(@RequestBody SupportManagerDto supportManagerDto) {
         return supportManagerService.createSupportManagerDto(supportManagerDto);
     }
 

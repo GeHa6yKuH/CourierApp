@@ -21,6 +21,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
     private final RestaurantMapper restaurantMapper;
+
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public Restaurant create(RestaurantDto restaurantDto) {
@@ -48,6 +49,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void deleteById(String restaurantId) {
+        getRestaurantById(restaurantId);
         restaurantRepository.deleteById(UUID.fromString(restaurantId));
     }
 }

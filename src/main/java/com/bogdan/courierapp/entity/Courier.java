@@ -1,19 +1,16 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.Courierstatus;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.springframework.boot.autoconfigure.task.TaskExecutionProperties;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
 
-
-import java.util.*;
-
-import static jakarta.persistence.CascadeType.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 
 @Getter

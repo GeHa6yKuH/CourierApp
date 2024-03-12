@@ -1,6 +1,6 @@
 package com.bogdan.courierapp.exception;
 
-public class CourierNotFoundException extends RuntimeException{
+public class CourierNotFoundException extends RuntimeException {
     public CourierNotFoundException() {
     }
 

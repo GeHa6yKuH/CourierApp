@@ -43,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void deleteOrderById(String orderId) {
+        getOrderById(orderId);
         orderRepository.deleteById(UUID.fromString(orderId));
     }
 }
