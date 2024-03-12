@@ -32,7 +32,7 @@ public class SupportManager {
 
     @ManyToOne
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
-    @JsonBackReference("manageRef")
+    @JsonBackReference("managRef")
     private AppRole appRole;
 
     @OneToMany(mappedBy = "supportManager", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -58,7 +58,9 @@ public class SupportManager {
         return "SupportManager{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 ", appRole=" + appRole +
+                ", couriers=" + couriers +
                 '}';
     }
 }

@@ -1,75 +1,78 @@
+
+
 -- ChangeSet: create app_role table
-CREATE TABLE IF NOT EXISTS app_role (
-                                        app_role_id UUID PRIMARY KEY NOT NULL,
+CREATE TABLE app_role (
+                                        app_role_id uuid PRIMARY KEY NOT NULL,
                                         name VARCHAR(45) UNIQUE NOT NULL,
                                         possibilities TEXT NOT NULL
     );
 
 -- ChangeSet: create courier table
-CREATE TABLE IF NOT EXISTS courier (
-                                        courier_id UUID PRIMARY KEY NOT NULL UNIQUE,
+CREATE TABLE courier (
+                                        courier_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         courier_name VARCHAR(45) NOT NULL UNIQUE,
                                         password VARCHAR(255),
                                         registration_date DATE NOT NULL,
-                                        delivery_zone_id UUID,
+                                        delivery_zone_id uuid,
                                         courier_status VARCHAR(36) NOT NULL,
                                         phone_number VARCHAR(45) UNIQUE NOT NULL,
                                         balance DECIMAL(6,2) NOT NULL,
-                                        statistics_id UUID UNIQUE,
-                                        support_manager_id UUID,
-                                        app_role_id UUID
+                                        statistics_id uuid UNIQUE,
+                                        support_manager_id uuid,
+                                        app_role_id uuid
     );
 
 -- ChangeSet: create delivery_zone table
-CREATE TABLE IF NOT EXISTS delivery_zone (
-                                        delivery_zone_id UUID PRIMARY KEY NOT NULL UNIQUE,
+CREATE TABLE delivery_zone (
+                                        delivery_zone_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         delivery_zone_name VARCHAR(45) NOT NULL,
                                         restaurants TEXT NOT NULL
     );
 
 -- ChangeSet: create manager table
-CREATE TABLE IF NOT EXISTS manager (
-                                        manager_id UUID PRIMARY KEY NOT NULL UNIQUE,
+CREATE TABLE manager (
+                                        manager_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         manager_name VARCHAR(45) NOT NULL,
-                                        app_role_id UUID NOT NULL
+                                        password VARCHAR(255),
+                                        app_role_id uuid NOT NULL
     );
 
 -- ChangeSet: create order table
-CREATE TABLE IF NOT EXISTS "order" (
-                                        order_id UUID PRIMARY KEY NOT NULL UNIQUE,
-                                        courier_id UUID NOT NULL,
-                                        restaurant_id UUID NOT NULL,
+CREATE TABLE "order" (
+                                        order_id uuid PRIMARY KEY NOT NULL UNIQUE,
+                                        courier_id uuid NOT NULL,
+                                        restaurant_id uuid NOT NULL,
                                         order_status VARCHAR(36) NOT NULL,
                                         placed_at TIMESTAMP NOT NULL,
                                         delivered_at TIMESTAMP NOT NULL
     );
 
 -- ChangeSet: create product table
-CREATE TABLE IF NOT EXISTS product (
-                                        product_id UUID PRIMARY KEY NOT NULL UNIQUE,
+CREATE TABLE product (
+                                        product_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         product_name VARCHAR(45) NOT NULL,
                                         product_price VARCHAR(36) NOT NULL,
-                                        restaurant_id UUID NOT NULL,
+                                        restaurant_id uuid NOT NULL,
                                         description TEXT NOT NULL
     );
 
 -- ChangeSet: create restaurant table
-CREATE TABLE IF NOT EXISTS restaurant (
-                                        restaurant_id UUID PRIMARY KEY NOT NULL UNIQUE,
+CREATE TABLE restaurant (
+                                        restaurant_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         restaurant_name VARCHAR(45) NOT NULL,
                                         owner VARCHAR(45) NOT NULL,
-                                        app_role_id UUID NOT NULL,
+                                        app_role_id uuid NOT NULL,
                                         restaurant_status VARCHAR(36) NOT NULL,
                                         creation_date DATE NOT NULL,
-                                        delivery_zone_id UUID NOT NULL
+                                        delivery_zone_id uuid NOT NULL
     );
 
 -- ChangeSet: create statistics table
-CREATE TABLE IF NOT EXISTS statistics (
-                                        statistics_id UUID PRIMARY KEY NOT NULL UNIQUE,
-                                        courier_id UUID NOT NULL,
+CREATE TABLE statistics (
+                                        statistics_id uuid PRIMARY KEY NOT NULL UNIQUE,
+                                        courier_id uuid NOT NULL,
                                         "from" DATE NOT NULL,
-                                        "till" DATE NOT NULL,
+                                        till DATE NOT NULL,
                                         completed_deliveries INT,
                                         earned_money DECIMAL(6,2) NOT NULL
     );
@@ -100,25 +103,45 @@ VALUES ('60c9bbdd-f631-414f-a12e-63ed1119b264', 'restaurant', 'restaurant can re
 
 -- ChangeSet: insert test data into courier table 1
 INSERT INTO courier (courier_id, courier_name, password, registration_date, delivery_zone_id, courier_status, phone_number, balance, statistics_id, support_manager_id, app_role_id)
-VALUES ('6453d453-0e33-41ec-aebd-637c5e6bb786', 'Anatoli Grenz', '$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i', '2023-10-12', '7bdf2f58-17cd-4243-957e-1a3119ff53ad', 'online', '+37123977865', 0.0, '25e65c2d-0d88-41fb-a9b1-085d3a126318', '91069e9d-683b-4fd1-93bc-f135207b7e73', '53da7e2b-7e7f-421e-8b5e-371dd13c2b64');
-
--- ChangeSet: update-courier-status
-UPDATE courier
-SET courier_status = 'ONLINE'
-WHERE courier_status = 'online';
+VALUES ('6453d453-0e33-41ec-aebd-637c5e6bb786',
+        'Anatoli Grenz',
+        '$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i',
+        '2023-10-12',
+        '7bdf2f58-17cd-4243-957e-1a3119ff53ad',
+        'ONLINE',
+        '+37123977865',
+        0.0,
+        '25e65c2d-0d88-41fb-a9b1-085d3a126318',
+        '91069e9d-683b-4fd1-93bc-f135207b7e73',
+        '53da7e2b-7e7f-421e-8b5e-371dd13c2b64');
 
 -- ChangeSet: insert test data into courier table 2
 INSERT INTO courier (courier_id, courier_name, password, registration_date, delivery_zone_id, courier_status, phone_number, balance, statistics_id, support_manager_id, app_role_id)
-VALUES ('dca55a7d-a8db-4777-9daa-97c823277dbf', 'Alex Karadin', '$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i', '2023-10-24', '1ced69a9-4918-4ece-a06a-7c7996f4475a', 'offline', '+37123309344', 29.7, '89e23605-46a6-4e40-b48d-bb677fde1d2c', '4829faa8-4946-410b-b859-f595d537e949', '53da7e2b-7e7f-421e-8b5e-371dd13c2b64');
+VALUES ('dca55a7d-a8db-4777-9daa-97c823277dbf',
+        'Alex Karadin',
+        '$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i',
+        '2023-10-24',
+        '1ced69a9-4918-4ece-a06a-7c7996f4475a',
+        'OFFLINE',
+        '+37123309344',
+        29.7,
+        '89e23605-46a6-4e40-b48d-bb677fde1d2c',
+        '4829faa8-4946-410b-b859-f595d537e949',
+        '53da7e2b-7e7f-421e-8b5e-371dd13c2b64');
 
 -- ChangeSet: insert test data into courier table 3
 INSERT INTO courier (courier_id, courier_name, password, registration_date, delivery_zone_id, courier_status, phone_number, balance, statistics_id, support_manager_id, app_role_id)
-VALUES ('8035c414-89a8-40e1-a914-83b65388a1f5', 'Reno Logan', '$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i', '2023-05-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad', 'offline', '+37121234344', 40.5, '77ecf268-36b8-438b-8130-333c2d735d37', 'e1105616-383e-4e57-94da-f860bb08552d', '53da7e2b-7e7f-421e-8b5e-371dd13c2b64');
-
--- ChangeSet: update-courier-status again
-UPDATE courier
-SET courier_status = 'OFFLINE'
-WHERE courier_status = 'offline';
+VALUES ('8035c414-89a8-40e1-a914-83b65388a1f5',
+        'Reno Logan',
+        '$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i',
+        '2023-05-24',
+        '7bdf2f58-17cd-4243-957e-1a3119ff53ad',
+        'OFFLINE',
+        '+37121234344',
+        40.5,
+        '77ecf268-36b8-438b-8130-333c2d735d37',
+        'e1105616-383e-4e57-94da-f860bb08552d',
+        '53da7e2b-7e7f-421e-8b5e-371dd13c2b64');
 
 -- Insert data to test db delivery_zone
 
@@ -134,21 +157,21 @@ VALUES ('1ced69a9-4918-4ece-a06a-7c7996f4475a', 'Hamburg', 'Kalinka, Seljd, Anti
 
 -- ChangeSet: insert test data into order table 1
 INSERT INTO "order" (order_id, courier_id, restaurant_id, order_status, placed_at, delivered_at)
-VALUES ('d02ea287-0e06-407f-b1b2-f1cc26651420', '6453d453-0e33-41ec-aebd-637c5e6bb786', '86994b48-49a3-4fe9-862b-6da6bd9f869f', 'delivered', '2023-01-16 12:30:45', '2022-01-16 12:56:40');
+VALUES ('d02ea287-0e06-407f-b1b2-f1cc26651420', '6453d453-0e33-41ec-aebd-637c5e6bb786', '86994b48-49a3-4fe9-862b-6da6bd9f869f', 'DELIVERED', '2023-01-16 12:30:45', '2022-01-16 12:56:40');
 
 -- ChangeSet: insert test data into order table 2
 INSERT INTO "order" (order_id, courier_id, restaurant_id, order_status, placed_at, delivered_at)
-VALUES ('72dff74e-30f1-46cd-9693-42c34a4cac88', 'dca55a7d-a8db-4777-9daa-97c823277dbf', '63fbdcb5-6360-4af3-8701-858f7a4d6467', 'placed', '2023-02-16 15:36:12', '2023-02-16 16:30:34');
+VALUES ('72dff74e-30f1-46cd-9693-42c34a4cac88', 'dca55a7d-a8db-4777-9daa-97c823277dbf', '63fbdcb5-6360-4af3-8701-858f7a4d6467', 'PLACED', '2023-02-16 15:36:12', '2023-02-16 16:30:34');
 
 -- ChangeSet: update-order-status-delivered
 UPDATE "order"
 SET order_status = 'DELIVERED'
-WHERE order_status = 'delivered';
+WHERE order_status = 'DELIVERED';
 
 -- ChangeSet: update-order-status-placed
 UPDATE "order"
 SET order_status = 'PLACED'
-WHERE order_status = 'placed';
+WHERE order_status = 'PLACED';
 
 -- Insert data to test db product
 
@@ -168,20 +191,20 @@ VALUES ('f5b55666-9434-4d12-8343-3261aff2b183', 'Pita', 16.89, '29102365-460d-43
 
 -- ChangeSet: insert test data into restaurant table 1
 INSERT INTO restaurant (restaurant_id, restaurant_name, owner, app_role_id, restaurant_status, creation_date, delivery_zone_id)
-VALUES ('86994b48-49a3-4fe9-862b-6da6bd9f869f', 'Pizza-Pasta', 'Marius Iceberg', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'active', '2021-06-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
+VALUES ('86994b48-49a3-4fe9-862b-6da6bd9f869f', 'Pizza-Pasta', 'Marius Iceberg', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'ACTIVE', '2021-06-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
 
 -- ChangeSet: insert test data into restaurant table 2
 INSERT INTO restaurant (restaurant_id, restaurant_name, owner, app_role_id, restaurant_status, creation_date, delivery_zone_id)
-VALUES ('63fbdcb5-6360-4af3-8701-858f7a4d6467', 'Sushi-Rolli', 'Antony Tilt', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'offline', '2013-06-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
+VALUES ('63fbdcb5-6360-4af3-8701-858f7a4d6467', 'Sushi-Rolli', 'Antony Tilt', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'OFFLINE', '2013-06-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
 
 -- ChangeSet: insert test data into restaurant table 3
 INSERT INTO restaurant (restaurant_id, restaurant_name, owner, app_role_id, restaurant_status, creation_date, delivery_zone_id)
-VALUES ('29102365-460d-4301-8117-4e62441d9c7f', 'Better Soi', 'Anatoly Bargel', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'active', '22021-08-14', '1ced69a9-4918-4ece-a06a-7c7996f4475a');
+VALUES ('29102365-460d-4301-8117-4e62441d9c7f', 'Better Soi', 'Anatoly Bargel', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'ACTIVE', '22021-08-14', '1ced69a9-4918-4ece-a06a-7c7996f4475a');
 
 -- ChangeSet: update-restaurant-status-active
 UPDATE restaurant
 SET restaurant_status = 'ACTIVE'
-WHERE restaurant_status = 'active';
+WHERE restaurant_status = 'ACTIVE';
 
 -- ChangeSet: update-restaurant-status-offline
 UPDATE restaurant
@@ -216,3 +239,79 @@ VALUES ('4829faa8-4946-410b-b859-f595d537e949', 'Alexei Treck', 'f6604fdd-71db-4
 INSERT INTO manager (manager_id, manager_name, app_role_id)
 VALUES ('e1105616-383e-4e57-94da-f860bb08552d', 'Sandra Suar', 'f6604fdd-71db-4e8c-a884-61d7de2b40cc');
 
+-- ChangeSet 1
+ALTER TABLE courier
+    ADD CONSTRAINT fk_courier_delivery_zone_id
+        FOREIGN KEY (delivery_zone_id)
+            REFERENCES delivery_zone (delivery_zone_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 2
+ALTER TABLE courier
+    ADD CONSTRAINT fk_courier_statistics_id
+        FOREIGN KEY (statistics_id)
+            REFERENCES statistics (statistics_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 3
+ALTER TABLE courier
+    ADD CONSTRAINT fk_courier_support_manager_id
+        FOREIGN KEY (support_manager_id)
+            REFERENCES manager (manager_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 4
+ALTER TABLE courier
+    ADD CONSTRAINT fk_courier_app_role_id
+        FOREIGN KEY (app_role_id)
+            REFERENCES app_role (app_role_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 5
+ALTER TABLE manager
+    ADD CONSTRAINT fk_manager_app_role_id
+        FOREIGN KEY (app_role_id)
+            REFERENCES app_role (app_role_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 6
+ALTER TABLE "order"
+    ADD CONSTRAINT fk_order_courier_id
+        FOREIGN KEY (courier_id)
+            REFERENCES courier (courier_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 7
+ALTER TABLE "order"
+    ADD CONSTRAINT fk_order_restaurant_id
+        FOREIGN KEY (restaurant_id)
+            REFERENCES restaurant (restaurant_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 8
+ALTER TABLE product
+    ADD CONSTRAINT fk_product_restaurant_id
+        FOREIGN KEY (restaurant_id)
+            REFERENCES restaurant (restaurant_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 9
+ALTER TABLE restaurant
+    ADD CONSTRAINT fk_restaurant_app_role_id
+        FOREIGN KEY (app_role_id)
+            REFERENCES app_role (app_role_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 10
+ALTER TABLE restaurant
+    ADD CONSTRAINT fk_restaurant_delivery_zone_id
+        FOREIGN KEY (delivery_zone_id)
+            REFERENCES delivery_zone (delivery_zone_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- ChangeSet 11
+ALTER TABLE statistics
+    ADD CONSTRAINT fk_statistics_courier_id
+        FOREIGN KEY (courier_id)
+            REFERENCES courier (courier_id)
+            ON DELETE CASCADE ON UPDATE CASCADE;

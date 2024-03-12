@@ -6,7 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface SupportManagerMapper {
-    SupportManager toEntity(SupportManagerDto supportManagerDto);
 
     SupportManagerDto toDto(SupportManager save);
 

@@ -3,15 +3,6 @@ server:
   servlet:
     context-path: /
 
-#logging:
-#  file:
-#    name: logback.log
-#
-#  level:
-#    root: info
-#    org.hibernate : error
-#    org.springframework.web : debug
-
 
 spring:
   main:
@@ -28,9 +19,9 @@ spring:
 
   jpa:
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+    hibernate:
+      ddl-auto: update
+
 springdoc:
   webjars:
     prefix:

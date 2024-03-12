@@ -83,7 +83,9 @@ public class Courier /*implements UserDetails*/ {
     public String toString() {
         return "Courier{" +
                 "id=" + id +
-                ", registrationDate='" + registrationDate + '\'' +
+                ", courierName='" + courierName + '\'' +
+                ", registrationDate=" + registrationDate +
+                ", password='" + password + '\'' +
                 ", deliveryZone=" + deliveryZone +
                 ", status=" + status +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -94,7 +96,7 @@ public class Courier /*implements UserDetails*/ {
                 '}';
     }
 
-//    @Override
+    //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        return List.of(new SimpleGrantedAuthority("ROLE_" + appRole.getName()));
 //    }

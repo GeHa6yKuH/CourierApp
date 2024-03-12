@@ -56,7 +56,9 @@ public class DeliveryZone {
     public String toString() {
         return "DeliveryZone{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", restaurants=" + restaurants +
+                ", couriers=" + couriers +
                 '}';
     }
 }

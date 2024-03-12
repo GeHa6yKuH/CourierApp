@@ -13,20 +13,13 @@
             <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="registration_date" value="2023-10-12"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
-            <column name="courier_status" value="online"/>
+            <column name="courier_status" value="ONLINE"/>
             <column name="phone_number" value="+37123977865"/>
             <column name="balance" value="0.0"/>
             <column name="statistics_id" value="25e65c2d-0d88-41fb-a9b1-085d3a126318"/>
             <column name="support_manager_id" value="91069e9d-683b-4fd1-93bc-f135207b7e73"/>
             <column name="app_role_id" value="53da7e2b-7e7f-421e-8b5e-371dd13c2b64"/>
         </insert>
-    </changeSet>
-
-    <changeSet author="b.podalevics" id="update-courier-status">
-        <update tableName="courier">
-            <column name="courier_status" value="ONLINE"/>
-            <where>courier_status = 'online'</where>
-        </update>
     </changeSet>
 
 
@@ -37,7 +30,7 @@
             <column name="password" value="$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i"/>
             <column name="registration_date" value="2023-10-24"/>
             <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
-            <column name="courier_status" value="offline"/>
+            <column name="courier_status" value="OFFLINE"/>
             <column name="phone_number" value="+37123309344"/>
             <column name="balance" value="29.7"/>
             <column name="statistics_id" value="89e23605-46a6-4e40-b48d-bb677fde1d2c"/>
@@ -53,20 +46,13 @@
             <column name="password" value="$2a$12$ghMXeCpYNajCx8DCOqr1su8tmHBgU24FQ2k0Q.Z0TwS11XPqako9i"/>
             <column name="registration_date" value="2023-05-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
-            <column name="courier_status" value="offline"/>
+            <column name="courier_status" value="OFFLINE"/>
             <column name="phone_number" value="+37121234344"/>
             <column name="balance" value="40.5"/>
             <column name="statistics_id" value="77ecf268-36b8-438b-8130-333c2d735d37"/>
             <column name="support_manager_id" value="e1105616-383e-4e57-94da-f860bb08552d"/>
             <column name="app_role_id" value="53da7e2b-7e7f-421e-8b5e-371dd13c2b64"/>
         </insert>
-    </changeSet>
-
-    <changeSet author="b.podalevics" id="update-courier-status again">
-        <update tableName="courier">
-            <column name="courier_status" value="OFFLINE"/>
-            <where>courier_status = 'offline'</where>
-        </update>
     </changeSet>
 
 </databaseChangeLog>

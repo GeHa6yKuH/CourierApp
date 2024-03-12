@@ -4,9 +4,7 @@ import com.bogdan.courierapp.entity.enums.RestaurantStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
@@ -21,6 +19,8 @@ import static jakarta.persistence.CascadeType.ALL;
 @NoArgsConstructor
 @Table(name = "restaurant")
 @Entity
+@Builder
+@AllArgsConstructor
 public class Restaurant {
     @Id
     @UuidGenerator
@@ -81,6 +81,7 @@ public class Restaurant {
     public String toString() {
         return "Restaurant{" +
                 "id=" + id +
+                ", restaurantName='" + restaurantName + '\'' +
                 ", owner='" + owner + '\'' +
                 ", appRole=" + appRole +
                 ", status=" + status +
@@ -90,7 +91,7 @@ public class Restaurant {
                 '}';
     }
 
-//    @Override
+    //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        return null;
 //    }

@@ -58,6 +58,8 @@ public class Statistics {
                 "id=" + id +
                 ", courier=" + courier +
                 ", completedDeliveries=" + completedDeliveries +
+                ", from=" + from +
+                ", till=" + till +
                 ", earnedMoney=" + earnedMoney +
                 '}';
     }

@@ -65,6 +65,9 @@ public class AppRole {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", possibilities='" + possibilities + '\'' +
+                ", couriers=" + couriers +
+                ", restaurants=" + restaurants +
+                ", managers=" + managers +
                 '}';
     }
 }
