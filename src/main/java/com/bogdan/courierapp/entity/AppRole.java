@@ -34,15 +34,15 @@ public class AppRole {
     @Column(name = "possibilities")
     private String possibilities;
 
-    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY, cascade = {MERGE, PERSIST, REFRESH})
+    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY)
     @JsonManagedReference("smRef")
     private List<Courier> couriers;
 
-    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY, cascade = {MERGE, PERSIST, REFRESH})
+    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY)
     @JsonManagedReference("arRef")
     private List<Restaurant> restaurants;
 
-    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY, cascade = {MERGE, PERSIST, REFRESH})
+    @OneToMany(mappedBy = "appRole", fetch = FetchType.LAZY)
     @JsonManagedReference("managRef")
     private List<SupportManager> managers;
 

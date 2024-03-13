@@ -58,16 +58,6 @@ class RestaurantControllerTest {
 
     private final static String VALID_ID_DELETE = "86994b48-49a3-4fe9-862b-6da6bd9f869f";
 
-    @Test
-    void createRestPositiveTest() throws Exception {
-        RestaurantDto restaurantDto = new RestaurantDto("MajorMarket", "Someone");
-        String requestString = objectMapper.writeValueAsString(restaurantDto);
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/rest/create")
-                .content(requestString)
-                .contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-        Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
-    }
 
     @Test
     void getRestaurantByIdPositiveTest() throws Exception {
@@ -87,7 +77,7 @@ class RestaurantControllerTest {
         List<Restaurant> restaurants = objectMapper.readValue(allRestaurants,
                 new TypeReference<>() {
                 });
-        Assertions.assertEquals(2, restaurants.size());
+        Assertions.assertEquals(1, restaurants.size());
     }
 
     @Test
@@ -102,6 +92,17 @@ class RestaurantControllerTest {
                 new TypeReference<>() {
                 });
         Assertions.assertEquals(1, restaurants.size());
+    }
+
+    @Test
+    void createRestPositiveTest() throws Exception {
+        RestaurantDto restaurantDto = new RestaurantDto("MajorMarket", "Someone");
+        String requestString = objectMapper.writeValueAsString(restaurantDto);
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post("/rest/create")
+                        .content(requestString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+        Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
     }
 
     @Test

@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.CascadeType.PERSIST;
 
 
 @Getter
@@ -32,11 +33,11 @@ public class DeliveryZone {
     private String name;
 
     @JsonManagedReference("restsRef")
-    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY, cascade = ALL)
+    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY, cascade = PERSIST)
     private List<Restaurant> restaurants;
 
     @JsonManagedReference("coursRef")
-    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY, cascade = ALL)
+    @OneToMany(mappedBy = "deliveryZone", fetch = FetchType.LAZY, cascade = PERSIST)
     private List<Courier> couriers;
 
     @Override

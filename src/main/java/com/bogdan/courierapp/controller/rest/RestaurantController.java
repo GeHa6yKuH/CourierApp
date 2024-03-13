@@ -6,6 +6,7 @@ import com.bogdan.courierapp.service.inter.RestaurantService;
 import com.bogdan.courierapp.validation.UUIDChecker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/rest")
 @RequiredArgsConstructor
+@Validated
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
@@ -28,7 +30,7 @@ public class RestaurantController {
     }
 
     @GetMapping("/byZone/{id}")
-    public List<Restaurant> getRestaurantsByDeliveryZone(@PathVariable("id") String deliveryZoneId) {
+    public List<Restaurant> getRestaurantsByDeliveryZone(@UUIDChecker @PathVariable("id") String deliveryZoneId) {
         return restaurantService.getRestaurantsByDeliveryZoneId(deliveryZoneId);
     }
 
@@ -38,7 +40,7 @@ public class RestaurantController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable("id") String restaurantId) {
+    public ResponseEntity<String> deleteById(@UUIDChecker @PathVariable("id") String restaurantId) {
         restaurantService.deleteById(restaurantId);
         return ResponseEntity.ok("restaurant with id: " + restaurantId + "has been deleted");
     }

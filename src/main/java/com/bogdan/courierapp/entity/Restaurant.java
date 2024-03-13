@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import static jakarta.persistence.CascadeType.ALL;
+import static jakarta.persistence.CascadeType.*;
 
 @Getter
 @Setter
@@ -33,7 +33,7 @@ public class Restaurant {
     @Column(name = "owner")
     private String owner;
 
-    @ManyToOne(cascade = ALL)
+    @ManyToOne(cascade = REFRESH)
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
     @JsonBackReference("arRef")
     private AppRole appRole;
@@ -45,12 +45,12 @@ public class Restaurant {
     @Column(name = "creation_date")
     private Date creationDate;
 
-    @ManyToOne(cascade = ALL)
+    @ManyToOne(cascade = REFRESH)
     @JsonBackReference("restsRef")
     @JoinColumn(name = "delivery_zone_id", referencedColumnName = "delivery_zone_id")
     private DeliveryZone deliveryZone;
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = ALL)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = PERSIST)
     @JsonManagedReference("resRef")
     private List<Product> products;
 
