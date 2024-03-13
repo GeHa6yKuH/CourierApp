@@ -5,6 +5,7 @@ import com.bogdan.courierapp.entity.AppRole;
 import com.bogdan.courierapp.entity.SupportManager;
 import com.bogdan.courierapp.exception.AppRoleNotFoundException;
 import com.bogdan.courierapp.exception.ErrorMessage;
+import com.bogdan.courierapp.exception.SupportManagerException;
 import com.bogdan.courierapp.mapper.SupportManagerMapper;
 import com.bogdan.courierapp.repository.AppRoleRepository;
 import com.bogdan.courierapp.repository.SupportManagerRepository;
@@ -30,7 +31,8 @@ public class SupportManagerImpl implements SupportManagerService {
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public SupportManager getSupportManagerById(String id) {
-        return supportManagerRepository.findById(UUID.fromString(id)).orElseThrow(() -> new RuntimeException("no such support manager"));
+        return supportManagerRepository.findById(UUID.fromString(id))
+                .orElseThrow(() -> new SupportManagerException(ErrorMessage.SUPPORT_MANAGER_NOT_FOUND));
     }
 
     @Override

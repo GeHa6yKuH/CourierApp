@@ -26,7 +26,7 @@ CREATE TABLE courier (
 CREATE TABLE delivery_zone (
                                         delivery_zone_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         delivery_zone_name VARCHAR(45) NOT NULL,
-                                        restaurants TEXT NOT NULL
+                                        restaurants TEXT
     );
 
 -- ChangeSet: create manager table
@@ -149,11 +149,11 @@ VALUES ('8035c414-89a8-40e1-a914-83b65388a1f5',
 
 -- ChangeSet: insert test data into delivery_zone table 1
 INSERT INTO delivery_zone (delivery_zone_id, delivery_zone_name, restaurants)
-VALUES ('7bdf2f58-17cd-4243-957e-1a3119ff53ad', 'Berlin', 'Regattalex, AlimPizza, OleksandrKebab');
+VALUES ('7bdf2f58-17cd-4243-957e-1a3119ff53ad', 'Berlin', 'null');
 
 -- ChangeSet: insert test data into delivery_zone table 2
 INSERT INTO delivery_zone (delivery_zone_id, delivery_zone_name, restaurants)
-VALUES ('1ced69a9-4918-4ece-a06a-7c7996f4475a', 'Hamburg', 'Kalinka, Seljd, AntiWibe');
+VALUES ('1ced69a9-4918-4ece-a06a-7c7996f4475a', 'Hamburg', 'null');
 
 -- Insert data to test db order
 

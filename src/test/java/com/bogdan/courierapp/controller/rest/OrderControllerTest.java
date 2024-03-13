@@ -54,7 +54,7 @@ class OrderControllerTest {
 
     private final static String VALID_ID = "72dff74e-30f1-46cd-9693-42c34a4cac88";
 
-    private final static String VALID_ID_DELETE = "d02ea287-0e06-407f-b1b2-f1cc26651420";
+    private final static String VALID_ID_DELETE = "f6604fdd-71db-4e8c-a884-61d7de2b40cc";
 
 
     @Test

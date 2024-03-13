@@ -35,6 +35,18 @@ public class CourierController {
         return courierService.getCourierById(id);
     }
 
+    @GetMapping("/do/{id}")
+    @Operation(summary = "rest get method by CourierDto class",
+            description = "some dto method",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "courier found"),
+                    @ApiResponse(responseCode = "404", description = "no such courier")
+            }
+    )
+    public CourierDto getCourierDtoById(@UUIDChecker @PathVariable("id") String id) {
+        return courierService.getCourierDtoById(id);
+    }
+
     @PostMapping
     @Operation(summary = "basic courier post rest method creating courier in database",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -57,8 +69,9 @@ public class CourierController {
             }
     )
     public ResponseEntity<String> updateCourierName(
-            @RequestParam String id,
-            @RequestParam String name) {
+            @UUIDChecker @RequestParam String id,
+            @RequestParam String name
+    ) {
         courierService.updateCourierName(id, name);
         return ResponseEntity.ok("Courier with ID " + id + " updated name to  " + name);
     }
@@ -70,23 +83,13 @@ public class CourierController {
             }
     )
     public ResponseEntity<String> updateCourierManager(
-            @RequestParam String id,
-            @RequestParam String managerId) {
+            @RequestParam @UUIDChecker String id,
+            @RequestParam @UUIDChecker String managerId
+    ) {
         courierService.updateCourierManager(id, managerId);
         return ResponseEntity.ok("Courier with ID " + id + " has new manager with id " + managerId);
     }
 
-    @DeleteMapping("/delete/{id}")
-    @Operation(summary = "basic courier rest delete method by provided id",
-            description = "delets a curier from database by given id",
-            responses = {
-                    @ApiResponse(responseCode = "200", description = "courier successfully deleted"),
-                    @ApiResponse(responseCode = "404", description = "no such courier / can not be deleted")
-            })
-    public ResponseEntity<String> deleteById(@PathVariable("id") @UUIDChecker String courierId) {
-        courierService.deleteById(courierId);
-        return ResponseEntity.ok("Courier with ID " + courierId + " has been deleted");
-    }
 
     @PutMapping("/complex")
     @Operation(summary = "special integrated update courier rest method with CourierUpdate class in database",
@@ -104,16 +107,16 @@ public class CourierController {
         return ResponseEntity.ok(courier);
     }
 
-    @GetMapping("/do/{id}")
-    @Operation(summary = "rest get method by CourierDto class",
-            description = "some dto method",
+    @DeleteMapping("/delete/{id}")
+    @Operation(summary = "basic courier rest delete method by provided id",
+            description = "delets a curier from database by given id",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "courier found"),
-                    @ApiResponse(responseCode = "404", description = "no such courier")
-            }
-    )
-    public CourierDto getCourierDtoById(@PathVariable("id") String id) {
-        return courierService.getCourierDtoById(id);
+                    @ApiResponse(responseCode = "200", description = "courier successfully deleted"),
+                    @ApiResponse(responseCode = "404", description = "no such courier / can not be deleted")
+            })
+    public ResponseEntity<String> deleteById(@PathVariable("id") @UUIDChecker String courierId) {
+        courierService.deleteById(courierId);
+        return ResponseEntity.ok("Courier with ID " + courierId + " has been deleted");
     }
 
 }

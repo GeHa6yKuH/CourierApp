@@ -6,10 +6,13 @@ import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.DeliveryZone;
 import com.bogdan.courierapp.entity.enums.Courierstatus;
 import com.bogdan.courierapp.exception.CourierNotFoundException;
+import com.bogdan.courierapp.exception.DeliveryZoneNotFoundException;
 import com.bogdan.courierapp.exception.ErrorMessage;
+import com.bogdan.courierapp.exception.SupportManagerException;
 import com.bogdan.courierapp.mapper.CourierMapper;
 import com.bogdan.courierapp.repository.CourierRepository;
 import com.bogdan.courierapp.repository.DeliveryZoneRepository;
+import com.bogdan.courierapp.repository.SupportManagerRepository;
 import com.bogdan.courierapp.service.inter.CourierService;
 import com.bogdan.courierapp.service.inter.DeliveryZoneService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +34,7 @@ public class CourierServiceImpl implements CourierService {
     private final CourierMapper courierMapper;
 
     private final DeliveryZoneRepository deliveryZoneRepository;
+    private final SupportManagerRepository supportManagerRepository;
 
     @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
@@ -43,7 +47,7 @@ public class CourierServiceImpl implements CourierService {
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Courier createCourier(CourierDto courier) {
         DeliveryZone deliveryZone = deliveryZoneRepository.findById(courier.getDeliveryZoneId())
-                .orElseThrow(() -> new RuntimeException("No such delivery zone!"));
+                .orElseThrow(() -> new DeliveryZoneNotFoundException(ErrorMessage.DELIVERY_ZONE_NOT_FOUND));
         Courier courier1 = Courier.builder()
                 .deliveryZone(deliveryZone)
                 .balance(0)
@@ -65,6 +69,9 @@ public class CourierServiceImpl implements CourierService {
     @Transactional(isolation = Isolation.READ_COMMITTED)
     @Override
     public void updateCourierManager(String id, String managerId) {
+        getCourierById(id);
+        supportManagerRepository.findById(UUID.fromString(managerId))
+                .orElseThrow(() -> new SupportManagerException(ErrorMessage.SUPPORT_MANAGER_NOT_FOUND));
         courierRepository.updateCourierManager(UUID.fromString(id), UUID.fromString(managerId));
     }
 

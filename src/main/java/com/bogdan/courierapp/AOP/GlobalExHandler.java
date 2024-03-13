@@ -1,31 +1,85 @@
 package com.bogdan.courierapp.AOP;
 
-import com.bogdan.courierapp.dto.ErrorResponse;
-import com.bogdan.courierapp.exception.CourierNotFoundException;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import org.springframework.http.HttpHeaders;
+import com.bogdan.courierapp.dto.ErrorDto;
+import com.bogdan.courierapp.exception.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class GlobalExHandler {
-    @ExceptionHandler(CourierNotFoundException.class)
-    @ApiResponse(responseCode = "400", description = "Bad request", content = {
-            @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = ErrorResponse.class))
-    })
-    public ResponseEntity<String> handleCourierNotFoundException(CourierNotFoundException courierNotFoundException) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        return ResponseEntity
-                .status(HttpStatus.I_AM_A_TEAPOT)
-                .headers(headers)
-                .body("Such courier does not exist in our universe :) " + courierNotFoundException.getMessage());
+
+    @ExceptionHandler(value = AppRoleNotFoundException.class)
+    public ResponseEntity<ErrorDto> appRoleNotFoundException(AppRoleNotFoundException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
     }
 
+    @ExceptionHandler(value = CourierNotFoundException.class)
+    public ResponseEntity<ErrorDto> courierNotFoundException(CourierNotFoundException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+    }
+
+    @ExceptionHandler(value = DeliveryZoneNotFoundException.class)
+    public ResponseEntity<ErrorDto> deliveryZoneException(DeliveryZoneNotFoundException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+    }
+
+    @ExceptionHandler(value = OrderNotFoundException.class)
+    public ResponseEntity<ErrorDto> orderNotFoundException(OrderNotFoundException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+    }
+
+    @ExceptionHandler(value = RestaurantWithThisNameAlreadyExistsException.class)
+    public ResponseEntity<ErrorDto> restaurantWithThisNameAlreadyExistsException(RestaurantWithThisNameAlreadyExistsException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+    }
+
+    @ExceptionHandler(value = StatisticsNotFoundException.class)
+    public ResponseEntity<ErrorDto> statisticsNotFoundException(StatisticsNotFoundException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+    }
+
+    @ExceptionHandler(value = SupportManagerException.class)
+    public ResponseEntity<ErrorDto> supportManagerException(SupportManagerException exception) {
+        ErrorDto errorDto = new ErrorDto(
+                "Look at how I wrote id",
+                exception.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorDto);
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseEntity<ErrorDto> exceptionHandler(Exception exception) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(
+                        new ErrorDto(
+                                "Something Wrong",
+                                exception.getMessage()
+                        ));
+    }
 }
