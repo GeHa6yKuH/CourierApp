@@ -27,12 +27,12 @@ public class RestaurantController {
         return restaurantService.getRestaurantById(id);
     }
 
-    @GetMapping("byZone/{id}")
+    @GetMapping("/byZone/{id}")
     public List<Restaurant> getRestaurantsByDeliveryZone(@PathVariable("id") String deliveryZoneId) {
         return restaurantService.getRestaurantsByDeliveryZoneId(deliveryZoneId);
     }
 
-    @GetMapping("byOwner/")
+    @GetMapping("/byOwner/")
     public List<Restaurant> getRestaurantsByOwner(@RequestParam String owner) {
         return restaurantService.getRestaurantsByOwner(owner);
     }
