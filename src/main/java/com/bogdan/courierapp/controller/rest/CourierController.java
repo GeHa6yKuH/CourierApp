@@ -2,6 +2,7 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
+import com.bogdan.courierapp.dto.ErrorDto;
 import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.service.inter.CourierService;
 import com.bogdan.courierapp.validation.UUIDChecker;
@@ -32,9 +33,15 @@ public class CourierController {
     @Operation(summary = "basic courier get rest method by id",
             description = "returns a courier from database for given id",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "courier found"),
-                    @ApiResponse(responseCode = "404", description = "no such courier found"),
-                    @ApiResponse(responseCode = "500", description = "internal server error occurred")
+                    @ApiResponse(responseCode = "200", description = "courier found",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "404", description = "no such courier found",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "500", description = "internal server error occurred",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             })
     public Courier getCourierById(@UUIDChecker @PathVariable("id") String id) {
         return courierService.getCourierById(id);
@@ -47,9 +54,15 @@ public class CourierController {
             description = "returns only essential courier fields described in CourierDto class" +
                     ",casting courier entity to CourierDto",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "courier found and casted"),
-                    @ApiResponse(responseCode = "404", description = "no such courier found"),
-                    @ApiResponse(responseCode = "500", description = "internal server error occurred")
+                    @ApiResponse(responseCode = "200", description = "courier found and casted",
+                            content = {@Content(schema = @Schema(implementation = CourierDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "404", description = "no such courier found",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "500", description = "internal server error occurred",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             }
     )
     public CourierDto getCourierDtoById(@UUIDChecker @PathVariable("id") String id) {
@@ -70,9 +83,13 @@ public class CourierController {
                     )
             ),
             responses = {
-                    @ApiResponse(responseCode = "200", description = "new courier successfully added"),
+                    @ApiResponse(responseCode = "200", description = "new courier successfully added",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
+                                    mediaType = "application/json")}),
                     @ApiResponse(responseCode = "404", description = "provided non existing " +
-                            "deliveryZoneId in CourierDto object")
+                            "deliveryZoneId in CourierDto object",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             }
     )
     public Courier createCourier(@RequestBody CourierDto courier) {
@@ -99,9 +116,15 @@ public class CourierController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Courier with provided id successfully updated" +
-                            "to have the new name"),
-                    @ApiResponse(responseCode = "404", description = "provided non existing courier id"),
-                    @ApiResponse(responseCode = "500", description = "internal server error occurred"),
+                            "to have the new name",
+                            content = {@Content(schema = @Schema(defaultValue = "Courier name updated"),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "404", description = "no such courier found",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "500", description = "internal server error occurred",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             }
     )
     @PutMapping
@@ -133,9 +156,15 @@ public class CourierController {
             },
             responses = {
                     @ApiResponse(responseCode = "200", description = "Courier with provided id successfully updated" +
-                            "to have new manager"),
-                    @ApiResponse(responseCode = "404", description = "provided non existing courier id"),
-                    @ApiResponse(responseCode = "500", description = "internal server error occurred"),
+                            "to have the new name",
+                            content = {@Content(schema = @Schema(defaultValue = "Courier manager updated"),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "404", description = "no such courier found",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "500", description = "internal server error occurred",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             }
     )
     @PutMapping("/updating")
@@ -160,10 +189,16 @@ public class CourierController {
                     )
             ),
             responses = {
-                    @ApiResponse(responseCode = "200", description = "new courier successfully added"),
-                    @ApiResponse(responseCode = "404", description = "provided non existing " +
-                            "courierId or deliveryZoneId in request body"),
-                    @ApiResponse(responseCode = "500", description = "internal server error occurred")
+                    @ApiResponse(responseCode = "200", description = "Courier with provided id successfully updated" +
+                            "to have new manager",
+                            content = {@Content(schema = @Schema(defaultValue = "Courier successfully updated"),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "404", description = "no such courier found",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "500", description = "internal server error occurred",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             })
     @PutMapping("/complex")
     public ResponseEntity<Courier> updateCourierMoreInfo(@RequestBody CourierUpdate courierUpdate) {
@@ -176,9 +211,15 @@ public class CourierController {
     @Operation(summary = "courier delete method by id",
             description = "deletes a courier with given id",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "courier successfully deleted"),
-                    @ApiResponse(responseCode = "404", description = "no such courier"),
-                    @ApiResponse(responseCode = "500", description = "internal server error occurred")
+                    @ApiResponse(responseCode = "200", description = "Courier with provided id successfully deleted",
+                            content = {@Content(schema = @Schema(defaultValue = "Courier successfully deleted"),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "404", description = "no such courier found",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "500", description = "internal server error occurred",
+                            content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")})
             })
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable("id") @UUIDChecker String courierId) {
