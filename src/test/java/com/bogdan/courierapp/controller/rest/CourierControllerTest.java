@@ -144,7 +144,7 @@ class CourierControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    //---------------------------createCourier()-----------------------------------------------------
+    //---------------------------updateCourierName()-----------------------------------------------------
     @Test
     void updateCourierNamePositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/courier")
