@@ -11,6 +11,7 @@
         <insert tableName="product">
             <column name="product_id" value="de2a3329-a046-4aef-ae9d-f4b811091f66"/>
             <column name="product_name" value="Pizza Carbonara"/>
+            <column name="order_id" value="null"/>
             <column name="product_price" value="14.99"/>
             <column name="restaurant_id" value="86994b48-49a3-4fe9-862b-6da6bd9f869f"/>
             <column name="description" value="abcde"/>
@@ -21,6 +22,7 @@
         <insert tableName="product">
             <column name="product_id" value="e4788d55-58d9-48bd-91f8-bcb3926f790d"/>
             <column name="product_name" value="Spring-roll"/>
+            <column name="order_id" value="null"/>
             <column name="product_price" value="15.87"/>
             <column name="restaurant_id" value="63fbdcb5-6360-4af3-8701-858f7a4d6467"/>
             <column name="description" value="abcabc"/>
@@ -31,6 +33,7 @@
         <insert tableName="product">
             <column name="product_id" value="f5b55666-9434-4d12-8343-3261aff2b183"/>
             <column name="product_name" value="Pita"/>
+            <column name="order_id" value="null"/>
             <column name="product_price" value="16.89"/>
             <column name="restaurant_id" value="29102365-460d-4301-8117-4e62441d9c7f"/>
             <column name="description" value="bcabcabca"/>

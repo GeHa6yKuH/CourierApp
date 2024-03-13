@@ -1,6 +1,8 @@
 package com.bogdan.courierapp.entity;
 
 import com.bogdan.courierapp.entity.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
@@ -28,8 +30,9 @@ public class Order {
     @Column(name = "order_id")
     private UUID id;
 
-//    @ManyToMany(mappedBy = "orders")
-//    private List<Product> productList;
+    @OneToMany(mappedBy = "order")
+    @JsonManagedReference("orderRef")
+    private List<Product> productList;
 
     @OneToOne
     @JoinColumn(name = "courier_id", referencedColumnName = "courier_id")

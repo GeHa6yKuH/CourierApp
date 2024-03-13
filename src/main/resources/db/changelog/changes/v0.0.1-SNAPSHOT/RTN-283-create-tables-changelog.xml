@@ -151,6 +151,9 @@
             <column name="product_name" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
+            <column name="order_id" type="uuid">
+                <constraints nullable="true"/>
+            </column>
             <column name="product_price" type="varchar(36)">
                 <constraints nullable="false"/>
             </column>

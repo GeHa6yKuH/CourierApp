@@ -39,8 +39,10 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-//    @ManyToMany
-//    private List<Order> orders;
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
+    @JsonBackReference("orderRef")
+    private Order order;
 
     public Product(UUID id, double price, Restaurant restaurant, String description) {
         this.id = id;

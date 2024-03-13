@@ -51,6 +51,7 @@ CREATE TABLE "order" (
 CREATE TABLE product (
                                         product_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         product_name VARCHAR(45) NOT NULL,
+                                        order_id uuid,
                                         product_price VARCHAR(36) NOT NULL,
                                         restaurant_id uuid NOT NULL,
                                         description TEXT NOT NULL
