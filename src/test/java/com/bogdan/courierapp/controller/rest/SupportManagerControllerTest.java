@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -59,6 +62,11 @@ class SupportManagerControllerTest {
 
     private final static String VALID_ID_DELETE = "4829faa8-4946-410b-b859-f595d537e949";
 
+    private final static String INVALID_ID = "29102365-460d-4301-8117-4e62441d9c7f";
+
+
+
+    //---------------------------getSupportManagerById()-----------------------------------------------------
     @Test
     void getSupportManagerByIdPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/manager/" + VALID_ID)
@@ -67,6 +75,25 @@ class SupportManagerControllerTest {
                 .andExpect(jsonPath("$.id").value(VALID_ID));
     }
 
+    @Test
+    void getSupportManagerByIdTest404() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/manager/" + INVALID_ID)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "8035c414-89a8-40e1-a914-83b65388a1f",
+            "8035c414-89a8-40e1-a914-83b65388a1f55",
+    })
+    void getSupportManagerByIdTest500(String id) throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/manager/" + id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isInternalServerError());
+    }
+
+    //---------------------------getManagersWithFirstOrLastName()-----------------------------------------------------
     @Test
     void getManagersWithFirstOrLastNamePositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/manager/nc")
@@ -81,6 +108,7 @@ class SupportManagerControllerTest {
         Assertions.assertEquals(1, supportManagers.size());
     }
 
+    //---------------------------getManagersWithName()-----------------------------------------------------
     @Test
     void getManagersWithNamePositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/manager/fa")
@@ -95,6 +123,7 @@ class SupportManagerControllerTest {
         Assertions.assertEquals(1, supportManagers.size());
     }
 
+    //---------------------------createRest()-----------------------------------------------------
     @Test
     void createRestPositiveTest() throws Exception {
         SupportManagerDto supportManagerDto = new SupportManagerDto("Dmitri Gol", "136");
@@ -106,6 +135,7 @@ class SupportManagerControllerTest {
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
     }
 
+    //---------------------------deleteById()-----------------------------------------------------
     @Test
     void deleteByIdPositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
@@ -113,6 +143,26 @@ class SupportManagerControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
+    }
+
+    @Test
+    void deleteByIdTest404() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/manager/delete/" + INVALID_ID)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "8035c414-89a8-40e1-a914-83b65388a1f55",
+            "8035c414-89a8-40e1-a914-8yyuyutf4567777545"
+    })
+    void deleteByIdTest500(String id) throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/manager/delete/" + id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
     }
 
 }

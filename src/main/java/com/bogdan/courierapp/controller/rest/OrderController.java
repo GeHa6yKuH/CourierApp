@@ -27,7 +27,7 @@ public class OrderController {
     }
 
     @GetMapping("/byRest")
-    public List<Order> getOrdersByRestaurant(@RequestParam String restaurantId) {
+    public List<Order> getOrdersByRestaurant(@UUIDChecker @RequestParam String restaurantId) {
         return orderService.getAllOrdersByRestaurant(restaurantId);
     }
 

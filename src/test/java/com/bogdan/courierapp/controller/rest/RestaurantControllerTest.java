@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +28,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -58,7 +61,9 @@ class RestaurantControllerTest {
 
     private final static String VALID_ID_DELETE = "86994b48-49a3-4fe9-862b-6da6bd9f869f";
 
+    private static final String NOT_EXIST_VALID_ID = "f6604fdd-71db-4e8c-a884-61d7de2b40cc";
 
+    //---------------------------getRestaurantById()-----------------------------------------------------
     @Test
     void getRestaurantByIdPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/rest/" + VALID_ID)
@@ -67,9 +72,22 @@ class RestaurantControllerTest {
                 .andExpect(jsonPath("$.id").value(VALID_ID));
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "8035c414-89a8-40e1-a914-83b65388a1f",
+            "8035c414-89a8-40e1-a914-83b65388a1f55",
+    })
+    void getCourierByIdTest500(String id) throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/rest/" + id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
+
+    //---------------------------getRestaurantsByDeliveryZone()-----------------------------------------------------
     @Test
     void getRestaurantsByDeliveryZonePositiveTest() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/rest/byZone/" + "7bdf2f58-17cd-4243-957e-1a3119ff53ad")
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/rest/byZone/" + "7bdf2f58-17cd-4243-957e-1a3119ff53ad")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
@@ -80,6 +98,18 @@ class RestaurantControllerTest {
         Assertions.assertEquals(1, restaurants.size());
     }
 
+    @ParameterizedTest
+    @CsvSource(value = {
+            "8035c414-89a8-40e1-a914-83b65388a1f",
+            "8035c414-89a8-40e1-a914-83b65388a1f55",
+    })
+    void getRestaurantsByDeliveryZoneTest500(String id) throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/rest/byZone/" + id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
+
+    //---------------------------getRestaurantsByOwner()-----------------------------------------------------
     @Test
     void getRestaurantsByOwnerPositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/rest/byOwner/")
@@ -94,6 +124,8 @@ class RestaurantControllerTest {
         Assertions.assertEquals(1, restaurants.size());
     }
 
+
+    //---------------------------createRest()-----------------------------------------------------
     @Test
     void createRestPositiveTest() throws Exception {
         RestaurantDto restaurantDto = new RestaurantDto("MajorMarket", "Someone");
@@ -105,6 +137,8 @@ class RestaurantControllerTest {
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
     }
 
+
+    //---------------------------deleteById()-----------------------------------------------------
     @Test
     void deleteByIdPositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
@@ -114,5 +148,17 @@ class RestaurantControllerTest {
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
     }
 
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "8035c414-89a8-40e1-a914-83b65388a1",
+            "8035c414-89a8-40e1-a914-83b65388a1f55",
+    })
+    void deleteByIdTest500(String id) throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/rest/delete/" + id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+    }
 
 }
