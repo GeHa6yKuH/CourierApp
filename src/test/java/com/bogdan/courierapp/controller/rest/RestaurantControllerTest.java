@@ -1,7 +1,9 @@
 package com.bogdan.courierapp.controller.rest;
 
+import com.bogdan.courierapp.entity.Restaurant;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,11 +14,15 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import com.fasterxml.jackson.core.type.TypeReference;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -62,10 +68,15 @@ class RestaurantControllerTest {
 
     @Test
     void getRestaurantByDeliveryZonePositiveTest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/rest/byZone/" + VALID_ID)
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/rest/byZone/" + "7bdf2f58-17cd-4243-957e-1a3119ff53ad")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(jsonPath("$.id").value(VALID_ID));
+                        .andReturn();
+        Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
+        String allRestaurants = mvcResult.getResponse().getContentAsString();
+        List<Restaurant> restaurants = objectMapper.readValue(allRestaurants,
+                new TypeReference<>() {
+                });
+        Assertions.assertEquals(2, restaurants.size());
     }
 
 }

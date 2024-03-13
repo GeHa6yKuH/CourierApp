@@ -7,4 +7,5 @@ public class ErrorMessage {
 
     public static final String STATISTICS_NOT_FOUND = "statistics not found";
     public static final String COURIER_NOT_FOUND = "courier not found";
+    public static final String RESTAURANT_NOT_FOUND = "Restaurant not found";
 }

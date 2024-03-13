@@ -13,7 +13,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, UUID> {
     Restaurant getRestaurantByRestaurantName(String restaurantName);
 
     @Query("SELECT r FROM Restaurant r WHERE r.deliveryZone.id = :deliveryZoneId")
-    List<Restaurant> getRestaurantsByDeliveryZoneId(String deliveryZoneId);
+    List<Restaurant> getRestaurantsByDeliveryZoneId(UUID deliveryZoneId);
 
     @Query("SELECT r FROM Restaurant r WHERE r.owner = :owner")
     List<Restaurant> getRestaurantsByOwner(String owner);

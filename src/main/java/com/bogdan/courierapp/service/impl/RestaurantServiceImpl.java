@@ -6,6 +6,7 @@ import com.bogdan.courierapp.entity.Restaurant;
 import com.bogdan.courierapp.entity.enums.RestaurantStatus;
 import com.bogdan.courierapp.exception.AppRoleNotFoundException;
 import com.bogdan.courierapp.exception.ErrorMessage;
+import com.bogdan.courierapp.exception.RestaurantNotFoundException;
 import com.bogdan.courierapp.exception.RestaurantWithThisNameAlreadyExistsException;
 import com.bogdan.courierapp.repository.AppRoleRepository;
 import com.bogdan.courierapp.repository.RestaurantRepository;
@@ -49,12 +50,13 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant getRestaurantById(String id) {
-        return restaurantRepository.getReferenceById(UUID.fromString(id));
+        return restaurantRepository.findById(UUID.fromString(id))
+                .orElseThrow(() -> new RestaurantNotFoundException(ErrorMessage.RESTAURANT_NOT_FOUND));
     }
 
     @Override
     public List<Restaurant> getRestaurantsByDeliveryZoneId(String deliveryZoneId) {
-        return restaurantRepository.getRestaurantsByDeliveryZoneId(deliveryZoneId);
+        return restaurantRepository.getRestaurantsByDeliveryZoneId(UUID.fromString(deliveryZoneId));
     }
 
     @Override
