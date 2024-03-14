@@ -46,6 +46,7 @@ public class RestaurantServiceImpl implements RestaurantService {
                 .appRole(appRole)
                 .deliveryZone(deliveryZone)
                 .status(RestaurantStatus.ACTIVE)
+                .password("admin")
                 .build();
         restaurantRepository.save(restaurant1);
 //        System.out.println("*******************");
