@@ -12,6 +12,7 @@
             <column name="restaurant_id" value="86994b48-49a3-4fe9-862b-6da6bd9f869f"/>
             <column name="restaurant_name" value="Pizza-Pasta"/>
             <column name="owner" value="Marius Iceberg"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
             <column name="restaurant_status" value="active"/>
             <column name="creation_date" value="2021-06-24"/>
@@ -24,6 +25,7 @@
             <column name="restaurant_id" value="63fbdcb5-6360-4af3-8701-858f7a4d6467"/>
             <column name="restaurant_name" value="Sushi-Rolli"/>
             <column name="owner" value="Antony Tilt"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
             <column name="restaurant_status" value="offline"/>
             <column name="creation_date" value="2013-06-24"/>
@@ -36,6 +38,7 @@
             <column name="restaurant_id" value="29102365-460d-4301-8117-4e62441d9c7f"/>
             <column name="restaurant_name" value="Better Soi"/>
             <column name="owner" value="Anatoly Bargel"/>
+            <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
             <column name="restaurant_status" value="active"/>
             <column name="creation_date" value="22021-08-14"/>

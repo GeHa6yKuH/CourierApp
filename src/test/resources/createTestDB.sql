@@ -64,6 +64,7 @@ CREATE TABLE restaurant (
                                         restaurant_id uuid PRIMARY KEY NOT NULL UNIQUE,
                                         restaurant_name VARCHAR(45) NOT NULL,
                                         owner VARCHAR(45) NOT NULL,
+                                        password VARCHAR(255) NOT NULL,
                                         app_role_id uuid NOT NULL,
                                         restaurant_status VARCHAR(36) NOT NULL,
                                         creation_date DATE NOT NULL,
@@ -193,16 +194,37 @@ VALUES ('f5b55666-9434-4d12-8343-3261aff2b183', 'Pita', 16.89, '29102365-460d-43
 -- Insert data to test db restaurant
 
 -- ChangeSet: insert test data into restaurant table 1
-INSERT INTO restaurant (restaurant_id, restaurant_name, owner, app_role_id, restaurant_status, creation_date, delivery_zone_id)
-VALUES ('86994b48-49a3-4fe9-862b-6da6bd9f869f', 'Pizza-Pasta', 'Marius Iceberg', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'ACTIVE', '2021-06-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
+INSERT INTO restaurant (restaurant_id, restaurant_name, owner, password, app_role_id, restaurant_status, creation_date, delivery_zone_id)
+VALUES ('86994b48-49a3-4fe9-862b-6da6bd9f869f',
+        'Pizza-Pasta',
+        'Marius Iceberg',
+        '$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6',
+        '60c9bbdd-f631-414f-a12e-63ed1119b264',
+        'ACTIVE',
+        '2021-06-24',
+        '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
 
 -- ChangeSet: insert test data into restaurant table 2
-INSERT INTO restaurant (restaurant_id, restaurant_name, owner, app_role_id, restaurant_status, creation_date, delivery_zone_id)
-VALUES ('63fbdcb5-6360-4af3-8701-858f7a4d6467', 'Sushi-Rolli', 'Antony Tilt', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'OFFLINE', '2013-06-24', '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
+INSERT INTO restaurant (restaurant_id, restaurant_name, owner, password, app_role_id, restaurant_status, creation_date, delivery_zone_id)
+VALUES ('63fbdcb5-6360-4af3-8701-858f7a4d6467',
+        'Sushi-Rolli',
+        'Antony Tilt',
+        '$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6',
+        '60c9bbdd-f631-414f-a12e-63ed1119b264',
+        'OFFLINE',
+        '2013-06-24',
+        '7bdf2f58-17cd-4243-957e-1a3119ff53ad');
 
 -- ChangeSet: insert test data into restaurant table 3
-INSERT INTO restaurant (restaurant_id, restaurant_name, owner, app_role_id, restaurant_status, creation_date, delivery_zone_id)
-VALUES ('29102365-460d-4301-8117-4e62441d9c7f', 'Better Soi', 'Anatoly Bargel', '60c9bbdd-f631-414f-a12e-63ed1119b264', 'ACTIVE', '22021-08-14', '1ced69a9-4918-4ece-a06a-7c7996f4475a');
+INSERT INTO restaurant (restaurant_id, restaurant_name, owner, password, app_role_id, restaurant_status, creation_date, delivery_zone_id)
+VALUES ('29102365-460d-4301-8117-4e62441d9c7f',
+        'Better Soi',
+        'Anatoly Bargel',
+        '$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6',
+        '60c9bbdd-f631-414f-a12e-63ed1119b264',
+        'ACTIVE',
+        '22021-08-14',
+        '1ced69a9-4918-4ece-a06a-7c7996f4475a');
 
 -- ChangeSet: update-restaurant-status-active
 UPDATE restaurant

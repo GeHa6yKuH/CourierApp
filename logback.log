@@ -1,76 +1,83 @@
-13.03.2024 11:15:53.771 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 11:18:05.689 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 11:22:36.221 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 11:25:46.079 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 11:44:56.682 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 11:50:06.827 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 11:50:08.550 [main] WARN  o.h.e.j.s.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
-13.03.2024 11:50:08.550 [main] ERROR o.h.e.j.s.SqlExceptionHelper - ERROR: null value in column "app_role_id" of relation "restaurant" violates not-null constraint
-  Подробности: Failing row contains (63fbdcb5-6360-4af3-8701-858f7a4d6467, Sushi-Rolli, Antony Tilt, null, OFFLINE, 2013-06-24, 7bdf2f58-17cd-4243-957e-1a3119ff53ad).
-13.03.2024 11:50:08.836 [main] WARN  o.h.e.j.s.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
-13.03.2024 11:50:08.837 [main] ERROR o.h.e.j.s.SqlExceptionHelper - ERROR: null value in column "delivery_zone_id" of relation "restaurant" violates not-null constraint
-  Подробности: Failing row contains (25ab8297-843a-4098-a0ce-de9621aea7c5, MajorMarket, Someone, 60c9bbdd-f631-414f-a12e-63ed1119b264, ACTIVE, 2024-03-13, null).
-13.03.2024 12:07:53.657 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:07:55.699 [main] WARN  o.h.e.j.s.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
-13.03.2024 12:07:55.700 [main] ERROR o.h.e.j.s.SqlExceptionHelper - ERROR: null value in column "app_role_id" of relation "restaurant" violates not-null constraint
-  Подробности: Failing row contains (63fbdcb5-6360-4af3-8701-858f7a4d6467, Sushi-Rolli, Antony Tilt, null, OFFLINE, 2013-06-24, 7bdf2f58-17cd-4243-957e-1a3119ff53ad).
-13.03.2024 12:29:28.144 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:29:30.044 [main] WARN  o.h.e.j.s.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
-13.03.2024 12:29:30.044 [main] ERROR o.h.e.j.s.SqlExceptionHelper - ERROR: null value in column "app_role_id" of relation "restaurant" violates not-null constraint
-  Подробности: Failing row contains (63fbdcb5-6360-4af3-8701-858f7a4d6467, Sushi-Rolli, Antony Tilt, null, OFFLINE, 2013-06-24, 7bdf2f58-17cd-4243-957e-1a3119ff53ad).
-13.03.2024 12:38:38.539 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:38:40.374 [main] WARN  o.h.e.j.s.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
-13.03.2024 12:38:40.374 [main] ERROR o.h.e.j.s.SqlExceptionHelper - ERROR: null value in column "app_role_id" of relation "restaurant" violates not-null constraint
-  Подробности: Failing row contains (63fbdcb5-6360-4af3-8701-858f7a4d6467, Sushi-Rolli, Antony Tilt, null, OFFLINE, 2013-06-24, 7bdf2f58-17cd-4243-957e-1a3119ff53ad).
-13.03.2024 12:45:02.628 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:54:56.640 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:56:36.522 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:58:48.775 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 12:58:50.636 [main] WARN  o.h.e.j.s.SqlExceptionHelper - SQL Error: 0, SQLState: 23502
-13.03.2024 12:58:50.636 [main] ERROR o.h.e.j.s.SqlExceptionHelper - ERROR: null value in column "app_role_id" of relation "restaurant" violates not-null constraint
-  Подробности: Failing row contains (63fbdcb5-6360-4af3-8701-858f7a4d6467, Sushi-Rolli, Antony Tilt, null, OFFLINE, 2013-06-24, 7bdf2f58-17cd-4243-957e-1a3119ff53ad).
-13.03.2024 13:08:41.358 [main] WARN  liquibase.executor - relation "seq_for_uuid_generator" already exists, skipping
-13.03.2024 13:08:45.168 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:12:08.723 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:13:24.479 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:14:38.886 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:17:32.225 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:21:35.031 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:23:11.479 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:25:23.601 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:26:54.029 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:27:33.660 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:27:56.799 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 13:29:15.570 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 14:06:01.496 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 14:17:26.712 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 14:32:36.968 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 14:35:21.699 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 14:37:24.022 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 14:46:35.676 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 16:57:13.011 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:03:59.177 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:27:32.748 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:28:11.757 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:30:05.880 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:53:09.878 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:54:03.888 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:54:43.198 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:55:45.597 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:56:14.243 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:57:21.401 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 17:58:13.954 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:00:05.485 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:00:29.136 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:00:58.825 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:01:24.485 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:01:48.324 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:12:59.439 [main] WARN  liquibase.executor - relation "seq_for_uuid_generator" already exists, skipping
-13.03.2024 18:13:02.821 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:20:38.879 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:21:02.857 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:21:26.560 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:21:50.267 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:22:17.781 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-13.03.2024 18:23:31.471 [main] WARN  liquibase.executor - relation "seq_for_uuid_generator" already exists, skipping
-13.03.2024 18:23:34.679 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+14.03.2024 11:56:55.763 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     4 changesets check sum
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283-create-tables-changelog.xml::create restaurant table::b.podalevics was: 9:8bac6eb7bcae34e1872c0f1cf61df2c7 but is now: 9:31ff7f20ce42183d7ccfe458b3ccb418
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 1::b.podalevics was: 9:a083e057262bd94358b153c82b7089d2 but is now: 9:2f8d1fd1c39b075dbf86323e80f28bbd
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 2::b.podalevics was: 9:9655916174c56b22ce9a35d9a6e0fdfe but is now: 9:a0f8d5b0afb3aee703046219ccaef2c6
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 3::b.podalevics was: 9:259fd350845916fe9a7d165aa4b7bb8c but is now: 9:8de96eb8ff9f80a1abcc363149079358
+
+14.03.2024 11:56:55.802 [main] ERROR o.s.b.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     4 changesets check sum
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283-create-tables-changelog.xml::create restaurant table::b.podalevics was: 9:8bac6eb7bcae34e1872c0f1cf61df2c7 but is now: 9:31ff7f20ce42183d7ccfe458b3ccb418
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 1::b.podalevics was: 9:a083e057262bd94358b153c82b7089d2 but is now: 9:2f8d1fd1c39b075dbf86323e80f28bbd
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 2::b.podalevics was: 9:9655916174c56b22ce9a35d9a6e0fdfe but is now: 9:a0f8d5b0afb3aee703046219ccaef2c6
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 3::b.podalevics was: 9:259fd350845916fe9a7d165aa4b7bb8c but is now: 9:8de96eb8ff9f80a1abcc363149079358
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347)
+	at com.bogdan.courierapp.MarketApplication.main(MarketApplication.java:10)
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     4 changesets check sum
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283-create-tables-changelog.xml::create restaurant table::b.podalevics was: 9:8bac6eb7bcae34e1872c0f1cf61df2c7 but is now: 9:31ff7f20ce42183d7ccfe458b3ccb418
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 1::b.podalevics was: 9:a083e057262bd94358b153c82b7089d2 but is now: 9:2f8d1fd1c39b075dbf86323e80f28bbd
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 2::b.podalevics was: 9:9655916174c56b22ce9a35d9a6e0fdfe but is now: 9:a0f8d5b0afb3aee703046219ccaef2c6
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 3::b.podalevics was: 9:259fd350845916fe9a7d165aa4b7bb8c but is now: 9:8de96eb8ff9f80a1abcc363149079358
+
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:304)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	... 18 common frames omitted
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ValidationFailedException: Validation Failed:
+     4 changesets check sum
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283-create-tables-changelog.xml::create restaurant table::b.podalevics was: 9:8bac6eb7bcae34e1872c0f1cf61df2c7 but is now: 9:31ff7f20ce42183d7ccfe458b3ccb418
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 1::b.podalevics was: 9:a083e057262bd94358b153c82b7089d2 but is now: 9:2f8d1fd1c39b075dbf86323e80f28bbd
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 2::b.podalevics was: 9:9655916174c56b22ce9a35d9a6e0fdfe but is now: 9:a0f8d5b0afb3aee703046219ccaef2c6
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 3::b.podalevics was: 9:259fd350845916fe9a7d165aa4b7bb8c but is now: 9:8de96eb8ff9f80a1abcc363149079358
+
+	at liquibase.command.CommandScope.execute(CommandScope.java:253)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:245)
+	at liquibase.Scope.lambda$child$0(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:195)
+	at liquibase.Scope.child(Scope.java:185)
+	at liquibase.Scope.child(Scope.java:164)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1419)
+	at liquibase.Liquibase.update(Liquibase.java:234)
+	at liquibase.Liquibase.update(Liquibase.java:212)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:343)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:294)
+	at liquibase.Scope.lambda$child$0(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:195)
+	at liquibase.Scope.child(Scope.java:185)
+	at liquibase.Scope.child(Scope.java:164)
+	at liquibase.Scope.child(Scope.java:252)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:287)
+	... 20 common frames omitted
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     4 changesets check sum
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283-create-tables-changelog.xml::create restaurant table::b.podalevics was: 9:8bac6eb7bcae34e1872c0f1cf61df2c7 but is now: 9:31ff7f20ce42183d7ccfe458b3ccb418
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 1::b.podalevics was: 9:a083e057262bd94358b153c82b7089d2 but is now: 9:2f8d1fd1c39b075dbf86323e80f28bbd
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 2::b.podalevics was: 9:9655916174c56b22ce9a35d9a6e0fdfe but is now: 9:a0f8d5b0afb3aee703046219ccaef2c6
+          db/changelog/changes/v0.0.1-SNAPSHOT/RTN-283_insert_test_data_changelog_6_restaurant.xml::insert test data into restaurant table 3::b.podalevics was: 9:259fd350845916fe9a7d165aa4b7bb8c but is now: 9:8de96eb8ff9f80a1abcc363149079358
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:358)
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:92)
+	at liquibase.command.CommandScope.execute(CommandScope.java:217)
+	... 36 common frames omitted
+14.03.2024 11:57:41.954 [main] WARN  liquibase.executor - relation "seq_for_uuid_generator" already exists, skipping
+14.03.2024 11:57:45.301 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

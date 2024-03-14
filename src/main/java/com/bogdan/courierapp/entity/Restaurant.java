@@ -33,6 +33,9 @@ public class Restaurant {
     @Column(name = "owner")
     private String owner;
 
+    @Column(name = "password")
+    private String password;
+
     @ManyToOne(cascade = REFRESH)
     @JoinColumn(name = "app_role_id", referencedColumnName = "app_role_id")
     @JsonBackReference("arRef")
