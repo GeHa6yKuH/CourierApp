@@ -17,11 +17,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-@Tag(description = "courier rest requests managing controller", name = "CourierController")
+
 @Validated
 @RestController
 @AllArgsConstructor
 @RequestMapping("/courier")
+@Tag(description = "courier rest requests managing controller", name = "CourierController")
 public class CourierController {
 
     private final CourierService courierService;
