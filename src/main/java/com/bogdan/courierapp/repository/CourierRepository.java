@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -19,7 +20,7 @@ public interface CourierRepository extends JpaRepository<Courier, UUID> {
     @Query("update Courier c set c.supportManager.id = :managerId where c.id = :uuid")
     void updateCourierManager(UUID uuid, UUID managerId);
 
+    @Query("SELECT c FROM Courier c WHERE c.phoneNumber = :phoneNumber")
+    Optional<Courier> findCourierByPhoneNumber(String phoneNumber);
 
-    @Query("SELECT c FROM Courier c WHERE c.courierName = :username")
-    Courier findByUsername(String username);
 }
