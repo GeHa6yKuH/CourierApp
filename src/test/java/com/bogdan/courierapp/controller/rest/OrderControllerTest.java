@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -84,6 +85,7 @@ class OrderControllerTest {
     }
 
     //---------------------------getOrdersByRestaurant()---------------------------------------------
+
     @Test
     void getOrdersByRestaurantPositiveTest() throws Exception {
         String id = "86994b48-49a3-4fe9-862b-6da6bd9f869f";
@@ -106,6 +108,7 @@ class OrderControllerTest {
     }
 
     //---------------------------createOrder()---------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void createOrderPositiveTest() throws Exception {
         OrderDto orderDto = new OrderDto(UUID.fromString("86994b48-49a3-4fe9-862b-6da6bd9f869f"),
@@ -118,6 +121,7 @@ class OrderControllerTest {
     }
 
     //---------------------------deleteCourierManager()---------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void deleteCourierManagerPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -125,6 +129,8 @@ class OrderControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
+
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void deleteCourierManagerTest404() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -133,6 +139,7 @@ class OrderControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",

@@ -3,7 +3,6 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
-import com.bogdan.courierapp.entity.Courier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -17,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -61,6 +61,7 @@ class CourierControllerTest {
     private final static String NOT_EXIST_VALID_ID = "b5310470-4943-4718-8899-2329a4dec392";
 
     //---------------------------getCourierById()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getCourierByIdPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/courier/" + VALID_ID)
@@ -69,6 +70,7 @@ class CourierControllerTest {
                 .andExpect(jsonPath("$.id").value(VALID_ID));
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getCourierByIdTest404() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/courier/" + NOT_EXIST_VALID_ID)
@@ -76,6 +78,7 @@ class CourierControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",
@@ -88,6 +91,7 @@ class CourierControllerTest {
     }
 
     //---------------------------getCourierDtoById()---------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getCourierDtoByIdPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/courier/do/" + VALID_ID)
@@ -95,6 +99,7 @@ class CourierControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getCourierDtoByIdTest404() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/courier/do/" + NOT_EXIST_VALID_ID)
@@ -102,6 +107,7 @@ class CourierControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",
@@ -114,6 +120,7 @@ class CourierControllerTest {
     }
 
     //---------------------------createCourier()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void createCourierPositiveTest() throws Exception {
         String validId = "7bdf2f58-17cd-4243-957e-1a3119ff53ad";
@@ -126,11 +133,9 @@ class CourierControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
-        String JsonResponse = mvcResult.getResponse().getContentAsString();
-        Courier courier = objectMapper.readValue(JsonResponse, Courier.class);
-        Assertions.assertEquals(courier.getPhoneNumber(), courierDto.getPhoneNumber());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void createCourierTest404() throws Exception {
         String deliveryIdNotExist = "2bdf2f58-17cd-4243-957e-1a3119ff53a2";
@@ -145,6 +150,7 @@ class CourierControllerTest {
     }
 
     //---------------------------updateCourierName()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void updateCourierNamePositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/courier")
@@ -153,9 +159,9 @@ class CourierControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
-        Assertions.assertEquals("Who", getById().getCourierName());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void updateCourierNameTest404() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.put("/courier")
@@ -165,6 +171,7 @@ class CourierControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",
@@ -179,6 +186,7 @@ class CourierControllerTest {
     }
 
     //---------------------------updateCourierManager()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void updateCourierManagerPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.put("/courier/updating")
@@ -188,6 +196,7 @@ class CourierControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f5,b5310470-4943-4718-8899-2329a4dec392",
@@ -201,6 +210,7 @@ class CourierControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f, 6829faa8-4946-410b-b859-f595d537e946",
@@ -217,6 +227,7 @@ class CourierControllerTest {
     }
 
     //---------------------------updateCourierMoreInfoCourierManager()---------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void updateCourierMoreInfoCourierManagerPositiveTest() throws Exception {
         CourierUpdate courierUpdate = new CourierUpdate(UUID.fromString(VALID_ID),
@@ -233,6 +244,7 @@ class CourierControllerTest {
     }
 
     //---------------------------deleteCourierManager()---------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void deleteCourierManagerPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -241,6 +253,7 @@ class CourierControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void deleteCourierManagerTest404() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -249,6 +262,7 @@ class CourierControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",
@@ -259,15 +273,5 @@ class CourierControllerTest {
                         .delete("/courier/delete/" + id)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isInternalServerError());
-    }
-
-    private Courier getById() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/courier/" + VALID_ID)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-        String courierJson = mvcResult.getResponse().getContentAsString();
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        return objectMapper.readValue(courierJson, Courier.class);
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -64,6 +65,7 @@ class RestaurantControllerTest {
     private static final String NOT_EXIST_VALID_ID = "f6604fdd-71db-4e8c-a884-61d7de2b40cc";
 
     //---------------------------getRestaurantById()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getRestaurantByIdPositiveTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/rest/" + VALID_ID)
@@ -72,6 +74,7 @@ class RestaurantControllerTest {
                 .andExpect(jsonPath("$.id").value(VALID_ID));
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",
@@ -84,6 +87,7 @@ class RestaurantControllerTest {
     }
 
     //---------------------------getRestaurantsByDeliveryZone()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getRestaurantsByDeliveryZonePositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
@@ -98,6 +102,7 @@ class RestaurantControllerTest {
         Assertions.assertEquals(1, restaurants.size());
     }
 
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1f",
@@ -110,6 +115,7 @@ class RestaurantControllerTest {
     }
 
     //---------------------------getRestaurantsByOwner()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void getRestaurantsByOwnerPositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/rest/byOwner/")
@@ -126,6 +132,7 @@ class RestaurantControllerTest {
 
 
     //---------------------------createRest()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void createRestPositiveTest() throws Exception {
         RestaurantDto restaurantDto = new RestaurantDto("MajorMarket", "Someone");
@@ -139,6 +146,7 @@ class RestaurantControllerTest {
 
 
     //---------------------------deleteById()-----------------------------------------------------
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @Test
     void deleteByIdPositiveTest() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
@@ -148,7 +156,7 @@ class RestaurantControllerTest {
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
     }
 
-
+    @WithMockUser(username = "admin", password = "admin", roles = {"courier"})
     @ParameterizedTest
     @CsvSource(value = {
             "8035c414-89a8-40e1-a914-83b65388a1",

@@ -14,7 +14,7 @@
             <column name="owner" value="Marius Iceberg"/>
             <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
-            <column name="restaurant_status" value="active"/>
+            <column name="restaurant_status" value="ACTIVE"/>
             <column name="creation_date" value="2021-06-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
         </insert>
@@ -27,7 +27,7 @@
             <column name="owner" value="Antony Tilt"/>
             <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
-            <column name="restaurant_status" value="offline"/>
+            <column name="restaurant_status" value="OFFLINE"/>
             <column name="creation_date" value="2013-06-24"/>
             <column name="delivery_zone_id" value="7bdf2f58-17cd-4243-957e-1a3119ff53ad"/>
         </insert>
@@ -40,24 +40,11 @@
             <column name="owner" value="Anatoly Bargel"/>
             <column name="password" value="$2a$10$mcqztegcxHUZ5bT5igeQtuy8WAB99YKvb1t5/cSut16zs0wsCK8n6"/>
             <column name="app_role_id" value="60c9bbdd-f631-414f-a12e-63ed1119b264"/>
-            <column name="restaurant_status" value="active"/>
+            <column name="restaurant_status" value="ACTIVE"/>
             <column name="creation_date" value="22021-08-14"/>
             <column name="delivery_zone_id" value="1ced69a9-4918-4ece-a06a-7c7996f4475a"/>
         </insert>
     </changeSet>
 
-    <changeSet author="b.podalevics" id="update-restaurant-status-active">
-        <update tableName="restaurant">
-            <column name="restaurant_status" value="ACTIVE"/>
-            <where>restaurant_status = 'active'</where>
-        </update>
-    </changeSet>
-
-    <changeSet author="b.podalevics" id="update-restaurant-status-offline">
-        <update tableName="restaurant">
-            <column name="restaurant_status" value="OFFLINE"/>
-            <where>restaurant_status = 'OFFLINE'</where>
-        </update>
-    </changeSet>
 
 </databaseChangeLog>

@@ -2,14 +2,13 @@ package com.bogdan.courierapp.service.impl;
 
 import com.bogdan.courierapp.dto.CourierDto;
 import com.bogdan.courierapp.dto.CourierUpdate;
+import com.bogdan.courierapp.entity.AppRole;
 import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.DeliveryZone;
 import com.bogdan.courierapp.entity.enums.Courierstatus;
-import com.bogdan.courierapp.exception.CourierNotFoundException;
-import com.bogdan.courierapp.exception.DeliveryZoneNotFoundException;
-import com.bogdan.courierapp.exception.ErrorMessage;
-import com.bogdan.courierapp.exception.SupportManagerException;
+import com.bogdan.courierapp.exception.*;
 import com.bogdan.courierapp.mapper.CourierMapper;
+import com.bogdan.courierapp.repository.AppRoleRepository;
 import com.bogdan.courierapp.repository.CourierRepository;
 import com.bogdan.courierapp.repository.DeliveryZoneRepository;
 import com.bogdan.courierapp.repository.SupportManagerRepository;
@@ -31,6 +30,8 @@ public class CourierServiceImpl implements CourierService {
 
     private final CourierRepository courierRepository;
 
+    private final AppRoleRepository appRoleRepository;
+
     private final CourierMapper courierMapper;
 
     private final DeliveryZoneRepository deliveryZoneRepository;
@@ -48,12 +49,16 @@ public class CourierServiceImpl implements CourierService {
     public Courier createCourier(CourierDto courier) {
         DeliveryZone deliveryZone = deliveryZoneRepository.findById(courier.getDeliveryZoneId())
                 .orElseThrow(() -> new DeliveryZoneNotFoundException(ErrorMessage.DELIVERY_ZONE_NOT_FOUND));
+        AppRole appRole = appRoleRepository.findById(UUID.fromString("53da7e2b-7e7f-421e-8b5e-371dd13c2b64"))
+                .orElseThrow(() -> new AppRoleNotFoundException(ErrorMessage.APP_ROLE_NOT_FOUND));
         Courier courier1 = Courier.builder()
                 .deliveryZone(deliveryZone)
                 .balance(0)
                 .courierName(courier.getCourierName())
                 .phoneNumber(courier.getPhoneNumber())
                 .status(Courierstatus.OFFLINE)
+                .password("admin")
+                .appRole(appRole)
                 .registrationDate(new Date(System.currentTimeMillis()))
                 .build();
         return courierRepository.save(courier1);
