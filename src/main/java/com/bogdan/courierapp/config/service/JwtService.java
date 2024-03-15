@@ -16,13 +16,13 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "f92ad7c7391d6cbe17141d848e96812d82159b8d4846e5d75b7caf33eb1256e3";
+    private static final String SECRET_KEY = System.getenv("secretKey");
 
     public String extractPhoneNumber(String token) {
-        return extractClaim(token, Claims::getSubject);
+        return extractClaims(token, Claims::getSubject);
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+    public <T> T extractClaims(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
@@ -48,15 +48,7 @@ public class JwtService {
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractPhoneNumber(token);
         return (username.equals(userDetails.getUsername())) &&
-                !(isTokenExpired(token));
-    }
-
-    private boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
-    }
-
-    private Date extractExpiration(String token) {
-        return extractClaim(token, Claims::getExpiration);
+                !(extractClaims(token, Claims::getExpiration).before(new Date()));
     }
 
     private Claims extractAllClaims(String token) {

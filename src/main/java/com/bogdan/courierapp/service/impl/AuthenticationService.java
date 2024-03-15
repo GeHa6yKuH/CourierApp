@@ -20,6 +20,7 @@ public class   AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     private final UserDetailsService userDetailsService;
+
     private final JwtService jwtService;
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
