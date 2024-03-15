@@ -3,6 +3,7 @@ package com.bogdan.courierapp.controller.rest;
 import com.bogdan.courierapp.dto.ErrorDto;
 import com.bogdan.courierapp.dto.StatisticsCreateDto;
 import com.bogdan.courierapp.dto.StatisticsDto;
+import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.Statistics;
 import com.bogdan.courierapp.service.inter.StatistcsService;
 import com.bogdan.courierapp.validation.UUIDChecker;
@@ -65,6 +66,9 @@ public class StatisticsController {
                     @ApiResponse(responseCode = "404", description = "Non existing" +
                             " Courier id provided in StatisticsCreateDto",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -86,6 +90,9 @@ public class StatisticsController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )

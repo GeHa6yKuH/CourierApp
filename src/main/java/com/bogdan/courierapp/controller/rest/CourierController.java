@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/courier")
-@Tag(description = "courier rest requests managing controller", name = "CourierController")
+@Tag(description = "controller for managing couriers", name = "CourierController")
 public class CourierController {
 
     private final CourierService courierService;
@@ -42,6 +42,9 @@ public class CourierController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     public Courier getCourierById(@UUIDChecker @PathVariable("id") String id) {
@@ -63,6 +66,9 @@ public class CourierController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -90,6 +96,9 @@ public class CourierController {
                     @ApiResponse(responseCode = "404", description = "provided non existing " +
                             "deliveryZoneId in CourierDto object",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -125,6 +134,9 @@ public class CourierController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -165,6 +177,9 @@ public class CourierController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -199,6 +214,9 @@ public class CourierController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @PutMapping("/complex")
@@ -220,6 +238,9 @@ public class CourierController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @DeleteMapping("/delete/{id}")

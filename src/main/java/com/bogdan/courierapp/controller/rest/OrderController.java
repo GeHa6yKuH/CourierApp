@@ -2,6 +2,7 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.ErrorDto;
 import com.bogdan.courierapp.dto.OrderDto;
+import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.Order;
 import com.bogdan.courierapp.service.inter.OrderService;
 import com.bogdan.courierapp.validation.UUIDChecker;
@@ -99,6 +100,9 @@ public class OrderController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -120,6 +124,9 @@ public class OrderController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )

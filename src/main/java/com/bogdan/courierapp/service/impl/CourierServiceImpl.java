@@ -35,6 +35,7 @@ public class CourierServiceImpl implements CourierService {
     private final CourierMapper courierMapper;
 
     private final DeliveryZoneRepository deliveryZoneRepository;
+
     private final SupportManagerRepository supportManagerRepository;
 
     @Override

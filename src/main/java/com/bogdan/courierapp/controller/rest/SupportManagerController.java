@@ -2,6 +2,7 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.ErrorDto;
 import com.bogdan.courierapp.dto.SupportManagerDto;
+import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.SupportManager;
 import com.bogdan.courierapp.service.inter.SupportManagerService;
 import com.bogdan.courierapp.validation.UUIDChecker;
@@ -40,6 +41,9 @@ public class SupportManagerController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @GetMapping("/{id}")
@@ -54,6 +58,9 @@ public class SupportManagerController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Successful request",
                             content = {@Content(array = @ArraySchema(schema = @Schema(implementation = SupportManager.class)),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @GetMapping("/nc")
@@ -68,6 +75,9 @@ public class SupportManagerController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "Support managers found",
                             content = {@Content(array = @ArraySchema(schema = @Schema(implementation = SupportManager.class)),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @GetMapping("/fa")
@@ -90,6 +100,9 @@ public class SupportManagerController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "New support manager successfully created",
                             content = {@Content(schema = @Schema(implementation = SupportManagerDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -112,6 +125,9 @@ public class SupportManagerController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )

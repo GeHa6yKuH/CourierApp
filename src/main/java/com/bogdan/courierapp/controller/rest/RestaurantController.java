@@ -2,6 +2,7 @@ package com.bogdan.courierapp.controller.rest;
 
 import com.bogdan.courierapp.dto.ErrorDto;
 import com.bogdan.courierapp.dto.RestaurantDto;
+import com.bogdan.courierapp.entity.Courier;
 import com.bogdan.courierapp.entity.Restaurant;
 import com.bogdan.courierapp.service.inter.RestaurantService;
 import com.bogdan.courierapp.validation.UUIDChecker;
@@ -39,6 +40,9 @@ public class RestaurantController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @GetMapping("/{id}")
@@ -57,6 +61,9 @@ public class RestaurantController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @GetMapping("/byZone/{id}")
@@ -80,6 +87,9 @@ public class RestaurantController {
                     @ApiResponse(responseCode = "200", description = "Restaurants found",
                             content = {@Content(array =
                             @ArraySchema(schema = @Schema(implementation = Restaurant.class)),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             })
     @GetMapping("/byOwner/")
@@ -102,6 +112,9 @@ public class RestaurantController {
             responses = {
                     @ApiResponse(responseCode = "200", description = "New restaurant successfully created",
                             content = {@Content(schema = @Schema(implementation = Restaurant.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
@@ -120,6 +133,9 @@ public class RestaurantController {
                                     mediaType = "application/json")}),
                     @ApiResponse(responseCode = "500", description = "Internal server error occurred",
                             content = {@Content(schema = @Schema(implementation = ErrorDto.class),
+                                    mediaType = "application/json")}),
+                    @ApiResponse(responseCode = "403", description = "permission denied",
+                            content = {@Content(schema = @Schema(implementation = Courier.class),
                                     mediaType = "application/json")})
             }
     )
